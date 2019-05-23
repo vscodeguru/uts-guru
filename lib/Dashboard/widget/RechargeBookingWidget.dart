@@ -1,6 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uts/Dashboard/widget/verticalSeperator.dart';
+import 'package:uts/Utils/helper.dart';
+
+class RechargeBookingWidget extends StatelessWidget {
+  const RechargeBookingWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(left: 10, right: 10),
+      height: MediaQuery.of(context).size.height * 0.12,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new TicketCardWidget(
+                margin: EdgeInsets.only(right: 10),
+                color: Helper.hexColor('#34495e'),
+                text: 'RECHARGE',
+                assetPath: 'assets/Images/ticket/rupee.svg',
+              ),
+              new TicketCardWidget(
+                margin: EdgeInsets.only(right: 10),
+                color: Helper.hexColor('#e67e22'),
+                text: 'MOVIE',
+                assetPath: 'assets/Images/ticket/movie.svg',
+              ),
+              new TicketCardWidget(
+                margin: EdgeInsets.only(right: 10),
+                color: Helper.hexColor('#0984e3'),
+                text: 'FLIGHT',
+                assetPath: 'assets/Images/ticket/flight.svg',
+              ),
+              new TicketCardWidget(
+                margin: EdgeInsets.only(right: 10),
+                color: Helper.hexColor('#1abc9c'),
+                text: 'BUS',
+                assetPath: 'assets/Images/ticket/bus.svg',
+              ),
+              new TicketCardWidget(
+                margin: EdgeInsets.only(right: 10),
+                color: Helper.hexColor('#40407a'),
+                text: 'HOTEL',
+                assetPath: 'assets/Images/ticket/tourist-1.svg',
+              ),
+              new TicketCardWidget(
+                color: Helper.hexColor('#3498db'),
+                text: 'TRAIN',
+                assetPath: 'assets/Images/ticket/metro.svg',
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 class TicketCardWidget extends StatelessWidget {
   final Color color;
@@ -19,7 +77,6 @@ class TicketCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return ticket3(context);
   }
 
@@ -37,7 +94,7 @@ class TicketCardWidget extends StatelessWidget {
         height: height,
         child: Row(
           children: <Widget>[
-            MyVerticalDashedSeparator(
+            VerticalDashedSeparator(
               backgroundColor: this.color,
               color: Colors.transparent,
               dashWidth: 2,
@@ -57,7 +114,7 @@ class TicketCardWidget extends StatelessWidget {
                 color: Colors.white,
               )),
             ),
-            MyVerticalDashedSeparator(
+            VerticalDashedSeparator(
               backgroundColor: this.color,
               color: Colors.transparent,
               dashWidth: 2,
@@ -112,7 +169,7 @@ class TicketCardWidget extends StatelessWidget {
                 color: Colors.white,
               )),
             ),
-            MyVerticalDashedSeparator(
+            VerticalDashedSeparator(
               backgroundColor: this.color,
               color: Colors.white,
               dashWidth: 2,
@@ -143,7 +200,6 @@ class TicketCardWidget extends StatelessWidget {
     );
   }
 
-
   Widget ticket3(BuildContext context) {
     var width = MediaQuery.of(context).size.width * 0.27;
     var height = MediaQuery.of(context).size.height * 0.10;
@@ -157,18 +213,7 @@ class TicketCardWidget extends StatelessWidget {
         height: height,
         child: Row(
           children: <Widget>[
-            // Container(
-            //   width: lftWidth,
-            //   height: height,
-            //   decoration: BoxDecoration(
-            //     color: this.color,
-            //     borderRadius: BorderRadius.only(
-            //       topLeft: Radius.circular(15.0),
-            //       bottomLeft: Radius.circular(15.0),
-            //     ),
-            //   ),
-            // ),
-            MyVerticalDashedSeparator(
+            VerticalDashedSeparator(
               backgroundColor: this.color,
               color: Colors.transparent,
               dashWidth: 2,
@@ -182,36 +227,33 @@ class TicketCardWidget extends StatelessWidget {
               ),
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 5,),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Center(
-                      child: SvgPicture.asset(
-                    this.assetPath,
-                    height: height - 30,
-                    width: height - 30,
-                    color: Colors.white,
-                  ),),
-                  SizedBox(height: 5,),
-                  Text(this.text, style: TextStyle(fontSize: 12, color: Colors.white),)
+                    child: SvgPicture.asset(
+                      this.assetPath,
+                      height: height - 30,
+                      width: height - 30,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    this.text,
+                    style: TextStyle(fontSize: 12, color: Colors.white),
+                  )
                 ],
               ),
             ),
-            MyVerticalDashedSeparator(
+            VerticalDashedSeparator(
               backgroundColor: this.color,
               color: Colors.transparent,
               dashWidth: 2,
               dashHeight: 7,
             ),
-            // Container(
-            //   width: rgtWidth,
-            //   height: height,
-            //   decoration: BoxDecoration(
-            //     color: this.color,
-            //     borderRadius: BorderRadius.only(
-            //       topRight: Radius.circular(15.0),
-            //       bottomRight: Radius.circular(15.0),
-            //     ),
-            //   ),
-            // )
           ],
         ),
       ),

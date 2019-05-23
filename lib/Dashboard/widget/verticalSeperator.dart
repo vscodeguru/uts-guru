@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MyVerticalDashedSeparator extends StatelessWidget {
+class VerticalDashedSeparator extends StatelessWidget {
   final double dashWidth;
   final double dashHeight;
   final Color color;
   final Color backgroundColor;
   final bool startWithBackgroundColor;
 
-  const MyVerticalDashedSeparator(
+  const VerticalDashedSeparator(
       {this.dashWidth = 1,
       this.dashHeight = 10,
       this.color = Colors.black,

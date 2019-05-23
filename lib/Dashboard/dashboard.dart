@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:uts/Dashboard/downgrid.dart';
-import 'package:uts/Dashboard/horizontallist.dart';
-import 'package:uts/Dashboard/offers.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uts/Dashboard/widget/RechargeBookingWidget.dart';
+
+import 'package:uts/Dashboard/widget/ProductWidget.dart';
+import 'package:uts/Dashboard/widget/ServiceCardWidget.dart';
 
 class Dashboard extends StatefulWidget {
   Dashboard({Key key}) : super(key: key);
@@ -20,13 +20,12 @@ class _DashboardState extends State<Dashboard> {
         overlayShadowSize: 1,
         boxFit: BoxFit.fitWidth,
         images: [
-          AssetImage('assets/Images/clem.jpg'),
-          AssetImage('assets/Images/photo.jpg'),
+          AssetImage('assets/Images/slider/flight.jpg'),
+          AssetImage('assets/Images/slider/hotel1.jpg'),
+          AssetImage('assets/Images/slider/online-shopping.jpg'),
+          AssetImage('assets/Images/slider/movie.jpg'),
         ],
         autoplay: true,
-        //   animationCurve: Curves.easeOutSine,
-        //   animationDuration: Duration(milliseconds: 1000),
-        //  // autoplayDuration: Duration(milliseconds: 1000),
         dotSize: 4.0,
         indicatorBgPadding: 2.0,
       ),
@@ -36,80 +35,33 @@ class _DashboardState extends State<Dashboard> {
       child: new ListView(
         children: <Widget>[
           imageCarousel,
-          new Padding(
-            padding: EdgeInsets.only(top: 10, left: 10),
-            child: Row(
-              children: <Widget>[
-                new SvgPicture.asset(
-                  'assets/Images/ticket/movietickets.svg',
-                  height: MediaQuery.of(context).size.height * 0.10 - 52,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                new Text(
-                  'Tickets Booking',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: HorizontalList(),
-            margin: EdgeInsets.only(left: 10, right: 10),
-            height: MediaQuery.of(context).size.height * 0.12,
-          ),
-          new Padding(
-            padding: EdgeInsets.only(top: 10, left: 10),
-            child: Row(
-              children: <Widget>[
-                new SvgPicture.asset(
-                  'assets/Images/ticket/movietickets.svg',
-                  height: MediaQuery.of(context).size.height * 0.10 - 52,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                new Text(
-                  'Our Products',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            // color: Colors.blueGrey[50],
-            margin: EdgeInsets.only(left: 10, right: 10),
-            height: MediaQuery.of(context).size.height * 0.55,
-            width: double.infinity,
-            child: CardList(),
-          ),
-          new Padding(
-            padding: EdgeInsets.only(top: 10, left: 10),
-            child: Row(
-              children: <Widget>[
-                new SvgPicture.asset(
-                  'assets/Images/ticket/movietickets.svg',
-                  height: MediaQuery.of(context).size.height * 0.10 - 52,
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                new Text(
-                  'Tickets Booking',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                ),
-              ],
-            ),
-          ),
-          Container(
-           //  margin: EdgeInsets.only(left: 10, right: 10),
-            width: double.infinity,
-            height: MediaQuery.of(context).size.height * 0.72,
-            child: DownGrid(),
-          ),
+          sectionHeader('Recharge & Booking'),
+          RechargeBookingWidget(),
+          sectionHeader('Product'),
+          ProductWidget(),
+          sectionHeader('Services'),
+          ServiceCardWidget(),
         ],
       ),
     ));
+  }
+
+  Padding sectionHeader(String text) {
+    return new Padding(
+      padding: EdgeInsets.only(top: 10, left: 10),
+      child: Row(
+        children: <Widget>[
+          // new SvgPicture.asset(
+          //   'assets/Images/ticket/movietickets.svg',
+          //   height: MediaQuery.of(context).size.height * 0.10 - 52,
+          // ),
+
+          new Text(
+            text,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+        ],
+      ),
+    );
   }
 }

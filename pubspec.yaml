@@ -61,6 +61,8 @@ flutter:
     - assets/Images/finances.jpg
     - assets/Images/hand.jpg
     - assets/Images/bank.jpg
+    - assets/Images/bank1.jpg
+    - assets/Images/chit1.jpg
     - assets/Images/Chit.png
     - assets/Images/300_12.jpg
     - assets/Images/100_4.jpg
@@ -74,7 +76,18 @@ flutter:
     - assets/Images/ticket/rupee.svg
     - assets/Images/ticket/metro.svg
     - assets/Images/ticket/movie.svg
+    - assets/Images/ticket/product.svg
     - assets/Images/ticket/movietickets.svg
+    - assets/Images/slider/movie.jpg
+    - assets/Images/slider/flight.jpg
+    - assets/Images/slider/hotel1.jpg
+    - assets/Images/slider/hotel2.jpg
+    - assets/Images/slider/mobilerecharge.jpg
+    - assets/Images/slider/movie.jpg
+    - assets/Images/slider/movie1.jpg
+    - assets/Images/slider/online-shopping.jpg
+    - assets/Images/card/education.png
+    - assets/Images/card/trading.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
