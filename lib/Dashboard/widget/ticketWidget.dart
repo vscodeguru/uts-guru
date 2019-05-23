@@ -145,7 +145,7 @@ class TicketCardWidget extends StatelessWidget {
 
 
   Widget ticket3(BuildContext context) {
-    var width = MediaQuery.of(context).size.width * 0.30;
+    var width = MediaQuery.of(context).size.width * 0.27;
     var height = MediaQuery.of(context).size.height * 0.10;
     var widht1 = width / 12;
     var middle = (widht1 * 12) - 4;

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class MyVerticalDashedSeparator extends StatelessWidget {
@@ -6,12 +5,14 @@ class MyVerticalDashedSeparator extends StatelessWidget {
   final double dashHeight;
   final Color color;
   final Color backgroundColor;
+  final bool startWithBackgroundColor;
 
   const MyVerticalDashedSeparator(
       {this.dashWidth = 1,
       this.dashHeight = 10,
       this.color = Colors.black,
-      this.backgroundColor = Colors.white});
+      this.backgroundColor = Colors.white,
+      this.startWithBackgroundColor = true});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,9 @@ class MyVerticalDashedSeparator extends StatelessWidget {
               height: dashHeight,
               child: DecoratedBox(
                 decoration: BoxDecoration(
-                    color: (_ % 2 == 0) ? color : backgroundColor),
+                    color: (_ % 2 == ((this.startWithBackgroundColor) ? 0 : 1))
+                        ? color
+                        : backgroundColor),
               ),
             );
           }),

@@ -5,136 +5,198 @@ class DownGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GridView.count(
-        crossAxisCount: 4,
-        childAspectRatio: 1.0,
-        padding: const EdgeInsets.only(left: 0.0),
-        //  / mainAxisSpacing: 20.0,
-        crossAxisSpacing: 1.0,
-        children: <Widget>[
-          GestureDetector(
-            onTap: () {},
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+    return Column(
+      children: <Widget>[
+        Container(
+          // padding: EdgeInsets.only(bottom: 30),
+          height: 150,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            elevation: 8.0,
+            color: Color.fromRGBO(64, 75, 96, .9),
+            margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Column(
+                Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.phone_android,
-                      color: Colors.indigo,
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Mobile",
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage('assets/Images/300_12.jpg'),
+                      radius: MediaQuery.of(context).size.width * 0.10,
                     ),
                   ],
                 ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(
-                      Icons.data_usage,
-                      color: Colors.indigo,
-                    ),
-                    SizedBox(height: 10),
                     Text(
-                      "DTH",
+                      'Flutter Guru',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.linear_scale,
+                          color: Colors.yellow,
+                        ),
+                        Text(
+                          'Intermediate',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
                     ),
                   ],
                 ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.keyboard_arrow_right,
+                      color: Colors.white,
+                    )
+                  ],
+                )
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {},
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        ),
+        Container(
+          //  padding: EdgeInsets.only(bottom: 30),
+          height: 150,
+          child: Card(
+            margin: EdgeInsets.only(bottom: 10, left: 15, right: 15),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            elevation: 8.0,
+            color: HexColor('#e67e22'),
+            //       margin: EdgeInsets.all(15),
+
+            //   margin: EdgeInsets.only(left:5,right: 5,bottom: 10,top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Column(
+                Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.lightbulb_outline,
-                      color: Colors.indigo,
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      "Electricity",
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage('assets/Images/100_5.jpg'),
+                      radius: MediaQuery.of(context).size.width * 0.10,
                     ),
                   ],
                 ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(
-                      Icons.credit_card,
-                      color: Colors.indigo,
-                    ),
-                    SizedBox(height: 10),
                     Text(
-                      "Credit card",
+                      'UTS GURU',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.linear_scale,
+                          color: Colors.yellow,
+                        ),
+                        Text(
+                          'Intermediate',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
                     ),
                   ],
                 ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.keyboard_arrow_right,
+                      color: Colors.white,
+                    )
+                  ],
+                )
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () {},
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+        ),
+        Container(
+          //  padding: EdgeInsets.only(bottom: 30),
+          height: 150,
+          child: Card(
+            margin: EdgeInsets.only(bottom: 10, left: 15, right: 15),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            elevation: 8.0,
+            color: HexColor('#40407a'),
+            //       margin: EdgeInsets.all(15),
+
+            //   margin: EdgeInsets.only(left:5,right: 5,bottom: 10,top: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                Column(
+                Row(
                   children: <Widget>[
-                    Icon(
-                      Icons.credit_card,
-                      color: Colors.indigo,
-                    ),
-                    SizedBox(height: 10),
-                    Text(
-                      'Landline',
+                    CircleAvatar(
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage('assets/Images/100_6.jpg'),
+                      radius: MediaQuery.of(context).size.width * 0.10,
                     ),
                   ],
                 ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(
-                      Icons.credit_card,
-                      color: Colors.indigo,
-                    ),
-                    SizedBox(height: 10),
                     Text(
-                      'Landline',
+                      'Reverse Parallel Parking',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Icon(
+                          Icons.linear_scale,
+                          color: Colors.yellow,
+                        ),
+                        Text(
+                          'Intermediate',
+                          style: TextStyle(color: Colors.white),
+                        )
+                      ],
                     ),
                   ],
                 ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.keyboard_arrow_right,
+                      color: Colors.white,
+                    )
+                  ],
+                )
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
+}
+
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }

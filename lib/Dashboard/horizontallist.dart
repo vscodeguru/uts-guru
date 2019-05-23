@@ -25,7 +25,6 @@ class Category extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        
         new TicketCardWidget(
           margin: EdgeInsets.only(right: 10),
           color: HexColor('#34495e'),
@@ -65,7 +64,6 @@ class Category extends StatelessWidget {
     );
   }
 }
-
 
 class HexColor extends Color {
   static int _getColorFromHex(String hexColor) {
