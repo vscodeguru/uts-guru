@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:uts/Dashboard/widget/verticalSeperator.dart';
-import 'package:uts/Utils/helper.dart';
+import 'package:UTS/Dashboard/widget/verticalSeperator.dart';
+import 'package:UTS/utils/helper.dart';
 
 class RechargeBookingWidget extends StatelessWidget {
   const RechargeBookingWidget({Key key}) : super(key: key);
@@ -17,40 +17,70 @@ class RechargeBookingWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new TicketCardWidget(
-                margin: EdgeInsets.only(right: 10),
-                color: Helper.hexColor('#34495e'),
-                text: 'RECHARGE',
-                assetPath: 'assets/Images/ticket/rupee.svg',
+              GestureDetector(
+                onTap: () {
+                Navigator.of(context).pushNamed("/registration");
+                },
+                child: new TicketCardWidget(
+                  margin: EdgeInsets.only(right: 10),
+                  color: Helper.hexColor('#34495e'),
+                  text: 'RECHARGE',
+                  assetPath: 'assets/Images/ticket/rupee.svg',
+                ),
               ),
-              new TicketCardWidget(
-                margin: EdgeInsets.only(right: 10),
-                color: Helper.hexColor('#e67e22'),
-                text: 'MOVIE',
-                assetPath: 'assets/Images/ticket/movie.svg',
+              GestureDetector(
+                onTap: () {
+                 Navigator.of(context).pushNamed("/registration");
+                },
+                child: new TicketCardWidget(
+                  margin: EdgeInsets.only(right: 10),
+                  color: Helper.hexColor('#e67e22'),
+                  text: 'MOVIE',
+                  assetPath: 'assets/Images/ticket/movie.svg',
+                ),
               ),
-              new TicketCardWidget(
-                margin: EdgeInsets.only(right: 10),
-                color: Helper.hexColor('#0984e3'),
-                text: 'FLIGHT',
-                assetPath: 'assets/Images/ticket/flight.svg',
+              GestureDetector(
+                onTap: () {
+                 Navigator.of(context).pushNamed("/error");
+                },
+                child: new TicketCardWidget(
+                  margin: EdgeInsets.only(right: 10),
+                  color: Helper.hexColor('#0984e3'),
+                  text: 'FLIGHT',
+                  assetPath: 'assets/Images/ticket/flight.svg',
+                ),
               ),
-              new TicketCardWidget(
-                margin: EdgeInsets.only(right: 10),
-                color: Helper.hexColor('#1abc9c'),
-                text: 'BUS',
-                assetPath: 'assets/Images/ticket/bus.svg',
+              GestureDetector(
+                onTap: () {
+                Navigator.of(context).pushNamed("/error");
+                },
+                child: new TicketCardWidget(
+                  margin: EdgeInsets.only(right: 10),
+                  color: Helper.hexColor('#1abc9c'),
+                  text: 'BUS',
+                  assetPath: 'assets/Images/ticket/bus.svg',
+                ),
               ),
-              new TicketCardWidget(
-                margin: EdgeInsets.only(right: 10),
-                color: Helper.hexColor('#40407a'),
-                text: 'HOTEL',
-                assetPath: 'assets/Images/ticket/tourist-1.svg',
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pushNamed("/error");
+                },
+                child: new TicketCardWidget(
+                  margin: EdgeInsets.only(right: 10),
+                  color: Helper.hexColor('#40407a'),
+                  text: 'HOTEL',
+                  assetPath: 'assets/Images/ticket/tourist-1.svg',
+                ),
               ),
-              new TicketCardWidget(
-                color: Helper.hexColor('#3498db'),
-                text: 'TRAIN',
-                assetPath: 'assets/Images/ticket/metro.svg',
+              GestureDetector(
+                onTap: () {
+                 Navigator.of(context).pushNamed("/error");
+                },
+                child: new TicketCardWidget(
+                  color: Helper.hexColor('#3498db'),
+                  text: 'TRAIN',
+                  assetPath: 'assets/Images/ticket/metro.svg',
+                ),
               ),
             ],
           ),

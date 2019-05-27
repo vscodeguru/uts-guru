@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uts/Utils/helper.dart';
+import 'package:UTS/utils/helper.dart';
 
 class ServiceCardWidget extends StatelessWidget {
   const ServiceCardWidget({Key key}) : super(key: key);
@@ -8,8 +8,18 @@ class ServiceCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        buildContainer('assets/Images/card/education.png'),
-        buildContainer('assets/Images/card/trading.png'),
+        GestureDetector(
+          onTap: () {
+           Navigator.of(context).pushNamed("/error");
+          },
+          child: buildContainer('assets/Images/card/education.png'),
+        ),
+        GestureDetector(
+          onTap: () {
+           Navigator.of(context).pushNamed("/error");
+          },
+          child: buildContainer('assets/Images/card/trading.png'),
+        ),
       ],
     );
   }

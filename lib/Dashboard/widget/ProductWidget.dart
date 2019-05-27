@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uts/Utils/helper.dart';
+import 'package:UTS/utils/helper.dart';
 
 class ProductWidget extends StatelessWidget {
   @override
@@ -88,20 +88,30 @@ class ProductWidget extends StatelessWidget {
       padding: EdgeInsets.only(left: 10, right: 10, top: 10),
       child: Row(
         children: <Widget>[
-          new Productcard(
-            height: _height,
-            width: _width,
-            assetpath: 'assets/Images/bank1.jpg',
-            text: 'Universal Trading Solution',
+          GestureDetector(
+            onTap: () {
+            Navigator.of(context).pushNamed("/error");
+            },
+            child: new Productcard(
+              height: _height,
+              width: _width,
+              assetpath: 'assets/Images/bank1.jpg',
+              text: 'Universal Trading Solution',
+            ),
           ),
           SizedBox(
             width: 10,
           ),
-          new Productcard(
-            height: _height,
-            width: _width,
-            assetpath: 'assets/Images/chit1.jpg',
-            text: 'Universal Chit Funds',
+          GestureDetector(
+            onTap: () {
+            Navigator.of(context).pushNamed("/error");
+            },
+            child: new Productcard(
+              height: _height,
+              width: _width,
+              assetpath: 'assets/Images/chit1.jpg',
+              text: 'Universal Chit Funds',
+            ),
           ),
         ],
       ),

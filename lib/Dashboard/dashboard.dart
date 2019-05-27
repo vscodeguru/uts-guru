@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:uts/Dashboard/widget/RechargeBookingWidget.dart';
-
-import 'package:uts/Dashboard/widget/ProductWidget.dart';
-import 'package:uts/Dashboard/widget/ServiceCardWidget.dart';
+import 'package:UTS/Dashboard/widget/EcommerceWidget.dart';
+import 'package:UTS/Dashboard/widget/RechargeBookingWidget.dart';
+import 'package:UTS/Dashboard/widget/ProductWidget.dart';
+import 'package:UTS/Dashboard/widget/ServiceCardWidget.dart';
+import 'package:UTS/utils/helper.dart';
 
 class Dashboard extends StatefulWidget {
+  
   Dashboard({Key key}) : super(key: key);
 
   _DashboardState createState() => _DashboardState();
 }
 
 class _DashboardState extends State<Dashboard> {
+  
   @override
   Widget build(BuildContext context) {
     Widget imageCarousel = new Container(
@@ -31,19 +34,42 @@ class _DashboardState extends State<Dashboard> {
       ),
     );
     return Scaffold(
-        body: Container(
-      child: new ListView(
-        children: <Widget>[
-          imageCarousel,
-          sectionHeader('Recharge & Booking'),
-          RechargeBookingWidget(),
-          sectionHeader('Product'),
-          ProductWidget(),
-          sectionHeader('Services'),
-          ServiceCardWidget(),
+      appBar: AppBar(
+        backgroundColor: Helper.hexColor('#79afbb'),
+        centerTitle: true,
+        leading: Image.asset(
+          'assets/Images/logo/uts.png',
+          scale: 1.6,
+        ),
+        title: Text('Universal Trading Solutions',style: TextStyle(fontSize: 15),),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.notifications),
+            onPressed: () {},
+          ),
         ],
+        elevation: 10.0,
       ),
-    ));
+      body: Container(
+        child: new SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              imageCarousel,
+              sectionHeader('Recharge & Booking'),
+              RechargeBookingWidget(),
+              sectionHeader('Product'),
+              ProductWidget(),
+              sectionHeader('Services'),
+              ServiceCardWidget(),
+              Container(
+                height: 200,
+                child: Ecommerce(),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Padding sectionHeader(String text) {

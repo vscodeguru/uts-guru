@@ -1,4 +1,4 @@
-package com.example.uts;
+package com.systemic.uts;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;
