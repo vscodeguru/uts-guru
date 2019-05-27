@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Searchwidget extends StatefulWidget {
-  _SearchwidgetState createState() => _SearchwidgetState();
+class ServiceBranchWidget extends StatefulWidget {
+  _ServiceBranchWidgetState createState() => _ServiceBranchWidgetState();
 }
 
-class _SearchwidgetState extends State<Searchwidget> {
-  var searchview = TextEditingController();
+class _ServiceBranchWidgetState extends State<ServiceBranchWidget> {
+  var brachsearchview = TextEditingController();
   bool firstSearch = false;
   String query = '';
-  List<String> cities;
+  List<String> branch;
   List<String> filterList;
   @override
   void initState() {
     super.initState();
-    cities = new List<String>();
-    cities = [
+    branch = new List<String>();
+    branch = [
       'Salem',
       'Coimbatore',
       'Chennai',
@@ -29,12 +29,12 @@ class _SearchwidgetState extends State<Searchwidget> {
       'kozhikode'
     ];
 
-    cities.sort();
+    branch.sort();
   }
 
   filterSearchList() {
-    searchview.addListener(() {
-      if (searchview.text.isEmpty) {
+    brachsearchview.addListener(() {
+      if (brachsearchview.text.isEmpty) {
         setState(() {
           firstSearch = true;
           query = '';
@@ -42,7 +42,7 @@ class _SearchwidgetState extends State<Searchwidget> {
       } else {
         setState(() {
           firstSearch = false;
-          query = searchview.text;
+          query = brachsearchview.text;
         });
       }
     });
@@ -50,7 +50,7 @@ class _SearchwidgetState extends State<Searchwidget> {
 
   _onClear() {
     setState(() {
-      searchview.text = "";
+      brachsearchview.text = "";
     });
   }
 
@@ -58,12 +58,11 @@ class _SearchwidgetState extends State<Searchwidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        
         padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 70),
         child: Column(
           children: <Widget>[
             Text(
-              'Select your Cities',
+              'Select your Branch',
               style: TextStyle(fontSize: 30),
             ),
             SizedBox(
@@ -82,12 +81,12 @@ class _SearchwidgetState extends State<Searchwidget> {
       padding: EdgeInsets.symmetric(horizontal: 13),
       child: TextFormField(
         autofocus: true,
-        controller: searchview,
+        controller: brachsearchview,
         onSaved: filterSearchList(),
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(15.0),
-          hintText: 'Enter your city',
+          hintText: 'Enter your branch',
           suffixIcon: IconButton(
             icon: Icon(
               Icons.clear,
@@ -114,18 +113,18 @@ class _SearchwidgetState extends State<Searchwidget> {
   Widget createListView() {
     return new Flexible(
       child: ListView.builder(
-        itemCount: cities.length,
+        itemCount: branch.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
-              Navigator.pop(context, cities[index]);
+              Navigator.pop(context, branch[index]);
             },
             child: new ListTile(
               leading: Icon(
                 Icons.location_city,
               ),
               title: Text(
-                '${cities[index]}',
+                '${branch[index]}',
               ),
             ),
           );
@@ -136,8 +135,8 @@ class _SearchwidgetState extends State<Searchwidget> {
 
   Widget performSearch() {
     filterList = List<String>();
-    for (int i = 0; i < cities.length; i++) {
-      var item = cities[i];
+    for (int i = 0; i < branch.length; i++) {
+      var item = branch[i];
       if (item.toLowerCase().contains(query.toLowerCase())) {
         filterList.add(item);
       }
