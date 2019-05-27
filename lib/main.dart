@@ -1,8 +1,8 @@
-import 'package:UTS/Dashboard/Searchabledropdown.dart';
+import 'package:UTS/Error/ErrorFile.dart';
 import 'package:UTS/Registration/registration.dart';
+import 'package:UTS/Searchable/Searchabledropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:UTS/Dashboard/ErrorFile.dart';
 import 'package:UTS/SplashScreen/splash.dart';
 
 void main() {
