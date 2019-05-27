@@ -40,7 +40,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     Form(
                       child: Container(
                         width: double.infinity,
-                        height: 400,
+                        height: 460,
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(8.0),
@@ -99,40 +99,38 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                   SizedBox(
                                     width: 10,
                                   ),
-                                  Flexible(
-                                    child: TextFormField(
-                                      buildCounter: (BuildContext context,
-                                              {int currentLength,
-                                              int maxLength,
-                                              bool isFocused}) =>
-                                          null,
-                                      maxLength: 25,
-                                      textInputAction: TextInputAction.next,
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.all(15.0),
-                                        border: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.blue),
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(2.0),
-                                            )),
-                                        focusedBorder: OutlineInputBorder(
-                                          borderSide:
-                                              BorderSide(color: Colors.blue),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.0)),
-                                        ),
-                                        hintText: 'Enter your Mobile',
-                                        hintStyle: TextStyle(
-                                            color: Colors.grey, fontSize: 12.0),
-                                      ),
-                                    ),
-                                  ),
                                 ],
                               ),
                               SizedBox(
                                 height: 25,
                               ),
+                              TextFormField(
+                                buildCounter: (BuildContext context,
+                                        {int currentLength,
+                                        int maxLength,
+                                        bool isFocused}) =>
+                                    null,
+                                maxLength: 25,
+                                textInputAction: TextInputAction.next,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(15.0),
+                                  border: OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.blue),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(2.0),
+                                      )),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.blue),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(2.0)),
+                                  ),
+                                  hintText: 'Enter your Mobile',
+                                  hintStyle: TextStyle(
+                                      color: Colors.grey, fontSize: 12.0),
+                                ),
+                              ),
+                              SizedBox(height: 25),
                               TextField(
                                 textInputAction: TextInputAction.next,
                                 decoration: InputDecoration(
@@ -309,33 +307,23 @@ class _RegistrationFormState extends State<RegistrationForm> {
                         ),
                       ),
                     ),
+                    ShowUp(
+                      delay: 1,
+                      child: FloatingActionButton(
+                        elevation: 6,
+                        foregroundColor: Colors.white,
+                        backgroundColor: Colors.blue,
+                        child: Icon(Icons.arrow_forward),
+                        onPressed: () {
+                          null;
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
           ),
-          Container(
-            alignment: Alignment.center,
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.32),
-            //     left: MediaQuery.of(context).size.width * 0.43),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ShowUp(
-                  child: FloatingActionButton(
-                    elevation: 6,
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.blue,
-                    child: Icon(Icons.arrow_forward),
-                    onPressed: () {
-                      null;
-                    },
-                  ),
-                ),
-              ],
-            ),
-          )
         ],
       ),
     );
