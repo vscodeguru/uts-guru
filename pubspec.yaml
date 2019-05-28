@@ -47,6 +47,8 @@ flutter:
     - assets/Images/bank.jpg
     - assets/Images/logo.png
     - assets/Images/bank1.jpg
+    - assets/Images/sign.jpg
+    - assets/Images/crowd.png
     - assets/Images/chit1.jpg
     - assets/Images/Chit.png
     - assets/Images/ticket/flight.svg
