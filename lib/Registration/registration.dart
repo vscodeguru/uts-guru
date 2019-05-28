@@ -1,5 +1,6 @@
 import 'package:UTS/Searchable/Searchabledropdown.dart';
 import 'package:UTS/Searchable/ServiceBranchdropdown.dart';
+import 'package:UTS/Utils/helper.dart';
 import 'package:UTS/fabanimations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +17,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
   var timeController = TextEditingController();
 
   DateTime _date = new DateTime.now();
-  TimeOfDay _time = new TimeOfDay.now();
   selectedDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,
@@ -32,6 +32,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
       });
     }
   }
+
   List<String> cities;
   List<String> branch;
   var tecCityController = TextEditingController();
@@ -39,18 +40,30 @@ class _RegistrationFormState extends State<RegistrationForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomPadding: false,
       body: Container(
+        color: Colors.black,
         child: Stack(
           // overflow: Overflow.visible,
           fit: StackFit.expand,
           children: <Widget>[
             Column(
-              // crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Image.asset(
-                  'assets/Images/crowd.png',
-                  //  scale: 9.0,
+                ClipPath(
+                  child: Container(
+                    height: 250,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          fit: BoxFit.fill,
+                          image: ExactAssetImage(
+                            'assets/Images/crowd.png',
+                          )),
+                      // color: Helper.hexColor('#4285f4'),
+                    ),
+                    //  Expanded(child: Container()),
+                  ),
+                  clipper: Clippingclass(),
                 ),
               ],
             ),
@@ -75,7 +88,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                 color: Colors.black12,
                                 offset: Offset(0.0, 12.0),
                                 blurRadius: 5),
-                                BoxShadow(
+                            BoxShadow(
                                 color: Colors.black12,
                                 offset: Offset(0.0, 12.0),
                                 blurRadius: 5),
@@ -124,7 +137,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
                               SizedBox(
                                 height: 10,
                               ),
-                            
                               DropdownButtonFormField<String>(
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.all(15.0),
@@ -162,34 +174,35 @@ class _RegistrationFormState extends State<RegistrationForm> {
                               SizedBox(
                                 height: 15,
                               ),
-                               GestureDetector(
-                                  onTap: () {
-                                    selectedDate(context);
-                                  },
-                                  child: AbsorbPointer(
-                                    child: TextFormField(
-                                      controller: dateController,
-                                           decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.all(15.0),
-                                  border: OutlineInputBorder(
-                                      borderSide:
-                                          BorderSide(color: Colors.blue),
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(2.0),
-                                      )),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(2.0)),
-                                  ),
-                                  hintText: 'DOB',
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey, fontSize: 12.0),
-                                ),
-                                      keyboardType: null,
+                              GestureDetector(
+                                onTap: () {
+                                  selectedDate(context);
+                                },
+                                child: AbsorbPointer(
+                                  child: TextFormField(
+                                    controller: dateController,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(15.0),
+                                      border: OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.blue),
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(2.0),
+                                          )),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.blue),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(2.0)),
+                                      ),
+                                      hintText: 'DOB',
+                                      hintStyle: TextStyle(
+                                          color: Colors.grey, fontSize: 12.0),
                                     ),
+                                    keyboardType: null,
                                   ),
                                 ),
+                              ),
                               SizedBox(
                                 height: 15,
                               ),
@@ -201,10 +214,9 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                     null,
                                 maxLength: 10,
                                 keyboardType: TextInputType.number,
-                                 inputFormatters: [
-                                        WhitelistingTextInputFormatter
-                                            .digitsOnly
-                                      ],
+                                inputFormatters: [
+                                  WhitelistingTextInputFormatter.digitsOnly
+                                ],
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.all(15.0),
                                   border: OutlineInputBorder(
@@ -222,10 +234,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                   hintStyle: TextStyle(
                                       color: Colors.grey, fontSize: 12.0),
                                 ),
-                              ), SizedBox(
+                              ),
+                              SizedBox(
                                 height: 15,
                               ),
-                               Row(
+                              Row(
                                 children: <Widget>[
                                   Flexible(
                                     child: TextFormField(
@@ -234,27 +247,25 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                               int maxLength,
                                               bool isFocused}) =>
                                           null,
-                                      maxLength: 25,
-
+                                      maxLength: 10,
+                                      keyboardType: TextInputType.number,
                                       decoration: InputDecoration(
-                                        contentPadding:
-                                            EdgeInsets.all(15.0),
+                                        contentPadding: EdgeInsets.all(15.0),
                                         border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.blue),
+                                            borderSide:
+                                                BorderSide(color: Colors.blue),
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(2.0),
                                             )),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.blue),
+                                          borderSide:
+                                              BorderSide(color: Colors.blue),
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(2.0)),
                                         ),
                                         hintText: 'Investment',
                                         hintStyle: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 12.0),
+                                            color: Colors.grey, fontSize: 12.0),
                                       ),
                                     ),
                                   ),
@@ -263,14 +274,13 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                   ),
                                   Flexible(
                                     child: TextFormField(
-                                     
+                                      maxLength: 10,
                                       keyboardType: TextInputType.number,
                                       buildCounter: (BuildContext context,
                                               {int currentLength,
                                               int maxLength,
                                               bool isFocused}) =>
                                           null,
-                                      maxLength: 10,
                                       textInputAction: TextInputAction.next,
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.all(15.0),
@@ -294,8 +304,6 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                   ),
                                 ],
                               ),
-                             
-                             
                             ],
                           ),
                         ),
@@ -309,6 +317,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
               top: MediaQuery.of(context).size.height * 0.85,
               left: MediaQuery.of(context).size.width * 0.43,
               child: ShowUp(
+                delay: 2,
                 child: FloatingActionButton(
                   elevation: 6,
                   foregroundColor: Colors.white,
@@ -317,10 +326,30 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   onPressed: () {},
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
     );
+  }
+}
+
+class Clippingclass extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0.0, size.height - 40);
+    path.quadraticBezierTo(
+        size.width / 4, size.height, size.width / 2, size.height);
+    path.quadraticBezierTo(size.width - (size.width / 4), size.height,
+        size.width, size.height - 40);
+    path.lineTo(size.width, 0.0);
+    path.close();
+    return path;
+  }
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    // TODO: implement shouldReclip
+    return null;
   }
 }
