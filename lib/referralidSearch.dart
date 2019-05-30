@@ -41,7 +41,9 @@ class DataSearch extends SearchDelegate<String> {
   }
 
   @override
-  Widget buildLeading(BuildContext context) {}
+  Widget buildLeading(BuildContext context) {
+                      
+  }
   @override
   Widget buildResults(BuildContext context) {
     

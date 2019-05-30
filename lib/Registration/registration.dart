@@ -4,7 +4,6 @@ import 'package:UTS/Utils/helper.dart';
 import 'package:UTS/fabanimations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 class RegistrationForm extends StatefulWidget {
   RegistrationForm({Key key}) : super(key: key);
 

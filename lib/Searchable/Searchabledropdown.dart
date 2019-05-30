@@ -57,7 +57,16 @@ class _SearchwidgetState extends State<Searchwidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+        appBar: AppBar(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+             
+            },
+          )
+        ],
+        ),
       body: Container(
         padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 70),
         child: Column(
@@ -82,7 +91,7 @@ class _SearchwidgetState extends State<Searchwidget> {
       padding: EdgeInsets.symmetric(horizontal: 13),
       child: TextFormField(
         autofocus: true,
-        controller: searchview,
+       // controller: searchview,
      //   onSaved: filterSearchList(),
         keyboardType: TextInputType.text,
         decoration: InputDecoration(

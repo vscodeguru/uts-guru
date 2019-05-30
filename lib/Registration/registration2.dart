@@ -1,11 +1,10 @@
-import 'package:UTS/Searchable/Searchabledropdown.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 
 import '../fabanimations.dart';
-import '../referralidSearch.dart';
+import 'package:keyboard_actions/keyboard_actions.dart';
 
 class RegistrationPage2 extends StatefulWidget {
   RegistrationPage2({Key key}) : super(key: key);
@@ -35,7 +34,7 @@ class _RegistrationPage2State extends State<RegistrationPage2> {
     }
   }
 
-  List<String> cities;
+  List<String> id;
   List<String> branch;
   var tecCityController = TextEditingController();
   var tecBranchController = TextEditingController();
@@ -46,252 +45,254 @@ class _RegistrationPage2State extends State<RegistrationPage2> {
         color: Helper.hexColor('#ebf6fc'),
         // color: Helper.hexColor('#e1fafd'),
         //   color: Colors.black,
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(left: 10.0, right: 10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.only(top: 55.0, left: 15),
-                  child: ShowUp(
-                    delay: 2,
-                    child: Text(
-                      'Registration',
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        color: Helper.hexColor('#4ca7d4'),
+        child: FormKeyboardActions(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Padding(
+              padding: EdgeInsets.only(left: 10.0, right: 10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 55.0, left: 15),
+                    child: ShowUp(
+                      delay: 3,
+                      child: Text(
+                        'Registration',
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: Helper.hexColor('#4ca7d4'),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  height: 250,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        //    fit: BoxFit.cover,
-                        image: ExactAssetImage(
-                      'assets/Images/crowd.png',
-                      // scale: 1.0,
-                    )),
-                    // color: Helper.hexColor('#4285f4'),
-                  ),
-                  //  Expanded(child: Container()),
-                ),
-                // Text('Personal Details'),
-                Form(
-                  child: Container(
+                  Container(
+                    height: 250,
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.79,
-                    child: Padding(
-                      padding:
-                          EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          SizedBox(
-                            height: 25,
-                          ),
-                          TextFormField(
-                            buildCounter: (BuildContext context,
-                                    {int currentLength,
-                                    int maxLength,
-                                    bool isFocused}) =>
-                                null,
-                            maxLength: 25,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                              hintText: 'Enter your Name',
-                              hintStyle: TextStyle(
-                                  //  color: Helper.hexColor('#e6ecef'),
-                                  fontSize: 15.0),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          //    fit: BoxFit.cover,
+                          image: ExactAssetImage(
+                        'assets/Images/crowd.png',
+                        // scale: 1.0,
+                      )),
+                      // color: Helper.hexColor('#4285f4'),
+                    ),
+                    //  Expanded(child: Container()),
+                  ),
+                  // Text('Personal Details'),
+                  Form(
+                    child: Container(
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.79,
+                      child: Padding(
+                        padding:
+                            EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            SizedBox(
+                              height: 25,
                             ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
-                              hintText: 'Enter your City',
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 15.0),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
-                            ),
-                            value: dropdownValue,
-                            onChanged: (String newValue) {
-                              setState(() {
-                                dropdownValue = newValue;
-                              });
-                            },
-                            items: <String>[
-                              'Male',
-                              'Female',
-                            ].map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              selectedDate(context);
-                            },
-                            child: AbsorbPointer(
-                              child: TextFormField(
-                                controller: dateController,
-                                decoration: InputDecoration(
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Helper.hexColor('#4ca7d4'),
-                                    ),
+                            TextFormField(
+                              buildCounter: (BuildContext context,
+                                      {int currentLength,
+                                      int maxLength,
+                                      bool isFocused}) =>
+                                  null,
+                              maxLength: 25,
+                              textInputAction: TextInputAction.next,
+                              decoration: InputDecoration(
+                                hintText: 'Enter your Name',
+                                hintStyle: TextStyle(
+                                    //  color: Helper.hexColor('#e6ecef'),
+                                    fontSize: 15.0),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Helper.hexColor('#4ca7d4'),
                                   ),
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Helper.hexColor('#4ca7d4'),
-                                    ),
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Helper.hexColor('#4ca7d4'),
                                   ),
-                                  hintText: 'Date',
-                                  hintStyle: TextStyle(
-                                      color: Colors.grey, fontSize: 15.0),
-                                ),
-                                keyboardType: null,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          TextFormField(
-                            buildCounter: (BuildContext context,
-                                    {int currentLength,
-                                    int maxLength,
-                                    bool isFocused}) =>
-                                null,
-                            maxLength: 10,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: [
-                              WhitelistingTextInputFormatter.digitsOnly
-                            ],
-                            decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Helper.hexColor('#4ca7d4'))),
-                              enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Helper.hexColor('#4ca7d4'))),
-                              hintText: 'Mobile Number',
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 15.0),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          TextFormField(
-                            buildCounter: (BuildContext context,
-                                    {int currentLength,
-                                    int maxLength,
-                                    bool isFocused}) =>
-                                null,
-                            maxLength: 10,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: [
-                              WhitelistingTextInputFormatter.digitsOnly
-                            ],
-                            decoration: InputDecoration(
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
                                 ),
                               ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            DropdownButtonFormField<String>(
+                              decoration: InputDecoration(
+                                hintText: 'Enter your City',
+                                hintStyle: TextStyle(
+                                    color: Colors.grey, fontSize: 15.0),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Helper.hexColor('#4ca7d4'),
+                                  ),
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Helper.hexColor('#4ca7d4'),
+                                  ),
                                 ),
                               ),
-                              hintText: 'Investment',
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 15.0),
+                              value: dropdownValue,
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  dropdownValue = newValue;
+                                });
+                              },
+                              items: <String>[
+                                'Male',
+                                'Female',
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
                             ),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          TextField(
-                            onTap: () {
-                              showSearch(
-                                  context: context, delegate: DataSearch());
-                            //   Navigator.push<String>(context, MaterialPageRoute(
-                            //     builder: (ctx) {
-                            //      return Searchwidget();
-                            //   },
-                            //   )).then((data) {
-                            //    setState(() {
-                            //      print('tapped');
-                            //      tecCityController.text = data;
-                            //     });
-                            //  });
-                            },
-                            buildCounter: (BuildContext context,
-                                    {int currentLength,
-                                    int maxLength,
-                                    bool isFocused}) =>
-                                null,
-                            maxLength: 10,
-                            controller: tecCityController,
-                            keyboardType: TextInputType.number,
-                            inputFormatters: [
-                              WhitelistingTextInputFormatter.digitsOnly
-                            ],
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                icon: Icon(Icons.search),
-                                onPressed: () {
-                                  showSearch(
-                                      context: context, delegate: DataSearch());
-                                },
+                            SizedBox(
+                              height: 15,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                selectedDate(context);
+                              },
+                              child: AbsorbPointer(
+                                child: TextFormField(
+                                  controller: dateController,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    hintText: 'Date',
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey, fontSize: 15.0),
+                                  ),
+                                  keyboardType: null,
+                                ),
                               ),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Helper.hexColor('#4ca7d4'))),
-                              enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Helper.hexColor('#4ca7d4'))),
-                              hintText: 'Referral ID ',
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 15.0),
                             ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          ShowUp(
-                            child: SizedBox(
+                            SizedBox(
+                              height: 20,
+                            ),
+                            TextFormField(
+                              buildCounter: (BuildContext context,
+                                      {int currentLength,
+                                      int maxLength,
+                                      bool isFocused}) =>
+                                  null,
+                              maxLength: 10,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                WhitelistingTextInputFormatter.digitsOnly
+                              ],
+                              textInputAction: TextInputAction.next,
+                              decoration: InputDecoration(
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'))),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'))),
+                                hintText: 'Mobile Number',
+                                hintStyle: TextStyle(
+                                    color: Colors.grey, fontSize: 15.0),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            TextFormField(
+                              textInputAction: TextInputAction.next,
+                              buildCounter: (BuildContext context,
+                                      {int currentLength,
+                                      int maxLength,
+                                      bool isFocused}) =>
+                                  null,
+                              maxLength: 10,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                WhitelistingTextInputFormatter.digitsOnly
+                              ],
+                              decoration: InputDecoration(
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Helper.hexColor('#4ca7d4'),
+                                  ),
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Helper.hexColor('#4ca7d4'),
+                                  ),
+                                ),
+                                hintText: 'Investment',
+                                hintStyle: TextStyle(
+                                    color: Colors.grey, fontSize: 15.0),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            TextField(
+                              onTap: () {
+                                showSearch(
+                                    context: context, delegate: DataSearch());
+                                //   Navigator.push<String>(context, MaterialPageRoute(
+                                //     builder: (ctx) {
+                                //      return Searchwidget();
+                                //   },
+                                //   )).then((data) {
+                                //    setState(() {
+                                //      print('tapped');
+                                //      tecCityController.text = data;
+                                //     });
+                                //  });
+                              },
+                              buildCounter: (BuildContext context,
+                                      {int currentLength,
+                                      int maxLength,
+                                      bool isFocused}) =>
+                                  null,
+                              maxLength: 10,
+                              controller: tecCityController,
+                              keyboardType: null,
+                              decoration: InputDecoration(
+                                suffixIcon: IconButton(
+                                  icon: Icon(Icons.arrow_drop_down,color: Colors.grey,),
+                                  onPressed: () {
+                                    showSearch(
+                                        context: context,
+                                        delegate: DataSearch());
+                                  },
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'))),
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'))),
+                                hintText: 'Referral ID ',
+                                hintStyle: TextStyle(
+                                    color: Colors.grey, fontSize: 15.0),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            SizedBox(
                               width: double.infinity,
                               child: RaisedButton(
                                 elevation: 6,
@@ -305,13 +306,13 @@ class _RegistrationPage2State extends State<RegistrationPage2> {
                                 onPressed: () {},
                               ),
                             ),
-                          )
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -336,14 +337,44 @@ class DataSearch extends SearchDelegate<String> {
   }
 
   @override
-  Widget buildLeading(BuildContext context) {}
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow,
+        progress: transitionAnimation,
+      ),
+      onPressed: () {
+        close(context, null);
+      },
+    );
+  }
+
   @override
-  Widget buildResults(BuildContext context) {}
+  Widget buildResults(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 100,
+      child: Card(
+        color: Colors.red,
+        child: Center(
+          child: Text(query),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestionList = query.isEmpty ? recentid : id;
+    final suggestionList = query.isEmpty
+        ? id
+        : id
+            .where((p) => p.toLowerCase().contains(query.toLowerCase()))
+            .toList();
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
+            onTap: () {
+              showResults(context);
+            },
             leading: Icon(Icons.cloud_done),
             title: RichText(
               text: TextSpan(
@@ -352,9 +383,8 @@ class DataSearch extends SearchDelegate<String> {
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 children: [
                   TextSpan(
-                    text: suggestionList[index].substring(query.length),
-                    style: TextStyle(color: Colors.grey)
-                  ),
+                      text: suggestionList[index].substring(query.length),
+                      style: TextStyle(color: Colors.grey)),
                 ],
               ),
             ),
