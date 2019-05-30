@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:UTS/SplashScreen/splash.dart';
 
+import 'Registration/registration2.dart';
+
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MyApp());
@@ -19,6 +21,7 @@ class MyApp extends StatelessWidget {
         "/error": (BuildContext context) => ErrorPageWidget(),
         "/registration": (BuildContext context) => RegistrationForm(),
         "/search": (BuildContext context) => Searchwidget(),
+         "/registration2": (BuildContext context) => RegistrationPage2(),
       },
       debugShowCheckedModeBanner: false,
       title: 'UTS',

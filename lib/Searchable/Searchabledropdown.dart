@@ -57,6 +57,7 @@ class _SearchwidgetState extends State<Searchwidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Container(
         padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 70),
         child: Column(
@@ -69,7 +70,7 @@ class _SearchwidgetState extends State<Searchwidget> {
               height: 40,
             ),
             createSearchview(),
-            firstSearch ? createListView() : performSearch(),
+            firstSearch ? createFilteredListView() : performSearch(),
           ],
         ),
       ),
@@ -82,7 +83,7 @@ class _SearchwidgetState extends State<Searchwidget> {
       child: TextFormField(
         autofocus: true,
         controller: searchview,
-        onSaved: filterSearchList(),
+     //   onSaved: filterSearchList(),
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
           contentPadding: const EdgeInsets.all(15.0),
@@ -110,28 +111,28 @@ class _SearchwidgetState extends State<Searchwidget> {
     );
   }
 
-  Widget createListView() {
-    return new Flexible(
-      child: ListView.builder(
-        itemCount: cities.length,
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.pop(context, cities[index]);
-            },
-            child: new ListTile(
-              leading: Icon(
-                Icons.location_city,
-              ),
-              title: Text(
-                '${cities[index]}',
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
+  // Widget createListView() {
+  //   return new Flexible(
+  //     child: ListView.builder(
+  //       itemCount: cities.length,
+  //       itemBuilder: (BuildContext context, int index) {
+  //         return GestureDetector(
+  //           onTap: () {
+  //             Navigator.pop(context, cities[index]);
+  //           },
+  //           child: new ListTile(
+  //             leading: Icon(
+  //               Icons.location_city,
+  //             ),
+  //             title: Text(
+  //               '${cities[index]}',
+  //             ),
+  //           ),
+  //         );
+  //       },
+  //     ),
+  //   );
+  // }
 
   Widget performSearch() {
     filterList = List<String>();

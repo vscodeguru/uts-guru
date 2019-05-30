@@ -40,24 +40,31 @@ class _RegistrationFormState extends State<RegistrationForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
       body: Container(
-        color: Colors.black,
+        //   color: Colors.black,
         child: Stack(
           // overflow: Overflow.visible,
           fit: StackFit.expand,
           children: <Widget>[
+            ClipPath(
+              child: Container(
+                  width: double.infinity,
+                  height: 250,
+                  color: Helper.hexColor('#e84644')),
+              clipper: Clippingclass2(),
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 ClipPath(
                   child: Container(
                     height: 250,
+                    width: double.infinity,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           image: ExactAssetImage(
-                            'assets/Images/crowd.png',
+                            'assets/Images/invest.jpg',
                           )),
                       // color: Helper.hexColor('#4285f4'),
                     ),
@@ -72,7 +79,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                 padding: EdgeInsets.only(
                     left: 28.0,
                     right: 28.0,
-                    top: MediaQuery.of(context).size.height * 0.25),
+                    top: MediaQuery.of(context).size.height * 0.23),
                 child: Column(
                   children: <Widget>[
                     // Text('Personal Details'),
@@ -86,11 +93,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           boxShadow: [
                             BoxShadow(
                                 color: Colors.black12,
-                                offset: Offset(0.0, 12.0),
-                                blurRadius: 5),
-                            BoxShadow(
-                                color: Colors.black12,
-                                offset: Offset(0.0, 12.0),
+                                offset: Offset(0.0, 15.0),
                                 blurRadius: 5),
                           ],
                         ),
@@ -103,7 +106,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                               Text(
                                 'Registration',
                                 style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
                               ),
                               SizedBox(
                                 height: 25,
@@ -125,9 +129,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                         Radius.circular(2.0),
                                       )),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(2.0)),
+                                    borderSide:
+                                        BorderSide(color: Colors.blue),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(2.0)),
                                   ),
                                   hintText: 'Enter your Name',
                                   hintStyle: TextStyle(
@@ -147,9 +152,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                         Radius.circular(2.0),
                                       )),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(2.0)),
+                                    borderSide:
+                                        BorderSide(color: Colors.blue),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(2.0)),
                                   ),
                                   hintText: 'Enter your Name',
                                   hintStyle: TextStyle(
@@ -164,7 +170,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                 items: <String>[
                                   'Male',
                                   'Female',
-                                ].map<DropdownMenuItem<String>>((String value) {
+                                ].map<DropdownMenuItem<String>>(
+                                    (String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,
                                     child: Text(value),
@@ -226,9 +233,10 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                         Radius.circular(2.0),
                                       )),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(2.0)),
+                                    borderSide:
+                                        BorderSide(color: Colors.blue),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(2.0)),
                                   ),
                                   hintText: 'Mobile Number',
                                   hintStyle: TextStyle(
@@ -252,8 +260,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.all(15.0),
                                         border: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.blue),
+                                            borderSide: BorderSide(
+                                                color: Colors.blue),
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(2.0),
                                             )),
@@ -265,7 +273,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                         ),
                                         hintText: 'Investment',
                                         hintStyle: TextStyle(
-                                            color: Colors.grey, fontSize: 12.0),
+                                            color: Colors.grey,
+                                            fontSize: 12.0),
                                       ),
                                     ),
                                   ),
@@ -285,8 +294,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.all(15.0),
                                         border: OutlineInputBorder(
-                                            borderSide:
-                                                BorderSide(color: Colors.blue),
+                                            borderSide: BorderSide(
+                                                color: Colors.blue),
                                             borderRadius: BorderRadius.all(
                                               Radius.circular(2.0),
                                             )),
@@ -298,7 +307,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                         ),
                                         hintText: 'Wallet Balance',
                                         hintStyle: TextStyle(
-                                            color: Colors.grey, fontSize: 12.0),
+                                            color: Colors.grey,
+                                            fontSize: 12.0),
                                       ),
                                     ),
                                   ),
@@ -314,14 +324,14 @@ class _RegistrationFormState extends State<RegistrationForm> {
               ),
             ),
             Positioned(
-              top: MediaQuery.of(context).size.height * 0.85,
+              top: MediaQuery.of(context).size.height * 0.82,
               left: MediaQuery.of(context).size.width * 0.43,
               child: ShowUp(
                 delay: 2,
                 child: FloatingActionButton(
                   elevation: 6,
                   foregroundColor: Colors.white,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Helper.hexColor('#44b4b8'),
                   child: Icon(Icons.arrow_forward),
                   onPressed: () {},
                 ),
@@ -338,6 +348,11 @@ class Clippingclass extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     var path = Path();
+    // path.lineTo(0, size.height - 50);
+    // path.lineTo(size.width / 2, size.height);
+    // path.lineTo(size.width, size.height - 50);
+    // path.lineTo(size.width, 0);
+
     path.lineTo(0.0, size.height - 40);
     path.quadraticBezierTo(
         size.width / 4, size.height, size.width / 2, size.height);
@@ -347,9 +362,34 @@ class Clippingclass extends CustomClipper<Path> {
     path.close();
     return path;
   }
+
   @override
   bool shouldReclip(CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
-    return null;
+    return false;
+  }
+}
+
+class Clippingclass2 extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height - 60);
+    path.lineTo(size.width / 2, size.height);
+    path.lineTo(size.width, size.height - 60);
+    path.lineTo(size.width, 0);
+
+    // path.lineTo(0.0, size.height - 40);
+    // path.quadraticBezierTo(
+    //     size.width / 4, size.height, size.width / 2, size.height);
+    // path.quadraticBezierTo(size.width - (size.width / 4), size.height,
+    //     size.width, size.height - 40);
+    // path.lineTo(size.width, 0.0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }

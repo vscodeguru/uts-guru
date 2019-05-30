@@ -47,8 +47,12 @@ flutter:
     - assets/Images/bank.jpg
     - assets/Images/logo.png
     - assets/Images/bank1.jpg
+    - assets/Images/fund.jpg
     - assets/Images/sign.jpg
     - assets/Images/crowd.png
+    - assets/Images/invest.jpg
+    - assets/Images/shuttercrowd.jpg
+    - assets/Images/business.jpg
     - assets/Images/funding.jpg
     - assets/Images/chit1.jpg
     - assets/Images/Chit.png
