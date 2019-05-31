@@ -1,11 +1,9 @@
-import 'package:UTS/Searchable/Searchabledropdown.dart';
 import 'package:UTS/Utils/helper.dart';
-import 'package:UTS/progressbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import '../fabanimations.dart';
-import '../referralidSearch.dart';
+import '../progressbutton.dart';
 
 class RegistrationPage extends StatefulWidget {
   RegistrationPage({Key key}) : super(key: key);
@@ -269,10 +267,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           TextField(
                             onTap: () {
                               showSearch<String>(
-                                  context: context, delegate: DataSearch()).then((data)
-                                  {
-
+                                      context: context, delegate: DataSearch())
+                                  .then(
+                                (data) {
+                                  setState(() {
+                                    print('tapped');
                                   });
+                                },
+                              );
                             },
                             buildCounter: (BuildContext context,
                                     {int currentLength,
@@ -314,9 +316,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                           SizedBox(
                             width: double.infinity,
-                            // child: Progress(),
+                          //p  child: Progress(),
                             child: RaisedButton(
-                              elevation: 6,
+                              elevation: 6.0,
                               color: Helper.hexColor('#4ca7d4'),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20.0)),
@@ -342,7 +344,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
 }
 
 class DataSearch extends SearchDelegate<String> {
-
   final id = ['ON1234we', 'ON65312ace', 'ON124cx', 'ON1234we'];
   final recentid = ['ON1234we', 'ON1234we'];
   @override
@@ -352,7 +353,6 @@ class DataSearch extends SearchDelegate<String> {
         icon: Icon(Icons.clear),
         onPressed: () {
           query = '';
-          close(context,'');
         },
       ),
     ];
@@ -373,18 +373,13 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            GestureDetector(
-              child: Text(
-                this.query,
-              ),
-            ),
-          ],
+    return Container(
+      height: 100,
+      width: 100,
+      child: Card(
+        color: Colors.red,
+        child: Center(
+          child: Text(query),
         ),
       ),
     );

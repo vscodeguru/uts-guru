@@ -92,74 +92,6 @@ class _TopupState extends State<Topup> {
                           SizedBox(
                             height: 25,
                           ),
-                          TextFormField(
-                            onFieldSubmitted: (term) {
-                              FocusScope.of(context).requestFocus(dateFocus);
-                            },
-                            controller: nameController,
-                            focusNode: nameFocus,
-                            buildCounter: (BuildContext context,
-                                    {int currentLength,
-                                    int maxLength,
-                                    bool isFocused}) =>
-                                null,
-                            maxLength: 25,
-                            textInputAction: TextInputAction.next,
-                            decoration: InputDecoration(
-                              hintText: 'Enter your Name',
-                              hintStyle: TextStyle(
-                                  //  color: Helper.hexColor('#e6ecef'),
-                                  fontSize: 15.0),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
-                              hintText: 'Enter your City',
-                              hintStyle: TextStyle(
-                                  color: Colors.grey, fontSize: 15.0),
-                              focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
-                              enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
-                            ),
-                            value: dropdownValue,
-                            onChanged: (String newValue) {
-                              setState(() {
-                                dropdownValue = newValue;
-                              });
-                            },
-                            items: <String>[
-                              'Male',
-                              'Female',
-                            ].map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
                           GestureDetector(
                             onTap: () {
                               selectedDate(context);
@@ -196,6 +128,72 @@ class _TopupState extends State<Topup> {
                           ),
                           TextFormField(
                             onFieldSubmitted: (term) {
+                              FocusScope.of(context).requestFocus(dateFocus);
+                            },
+                            controller: nameController,
+                            focusNode: nameFocus,
+                            buildCounter: (BuildContext context,
+                                    {int currentLength,
+                                    int maxLength,
+                                    bool isFocused}) =>
+                                null,
+                            maxLength: 25,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                              hintText: 'Customer ID',
+                              hintStyle: TextStyle(
+                                  //  color: Helper.hexColor('#e6ecef'),
+                                  fontSize: 15.0),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Helper.hexColor('#4ca7d4'),
+                                ),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Helper.hexColor('#4ca7d4'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          TextFormField(
+                            onFieldSubmitted: (term) {
+                              FocusScope.of(context).requestFocus(dateFocus);
+                            },
+                            controller: nameController,
+                            focusNode: nameFocus,
+                            buildCounter: (BuildContext context,
+                                    {int currentLength,
+                                    int maxLength,
+                                    bool isFocused}) =>
+                                null,
+                            maxLength: 25,
+                            textInputAction: TextInputAction.next,
+                            decoration: InputDecoration(
+                              hintText: 'Referral Name',
+                              hintStyle: TextStyle(
+                                  //  color: Helper.hexColor('#e6ecef'),
+                                  fontSize: 15.0),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Helper.hexColor('#4ca7d4'),
+                                ),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Helper.hexColor('#4ca7d4'),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          TextFormField(
+                            onFieldSubmitted: (term) {
                               FocusScope.of(context)
                                   .requestFocus(investmenFocus);
                             },
@@ -220,8 +218,8 @@ class _TopupState extends State<Topup> {
                                   borderSide: BorderSide(
                                       color: Helper.hexColor('#4ca7d4'))),
                               hintText: 'Mobile Number',
-                              hintStyle: TextStyle(
-                                  color: Colors.grey, fontSize: 15.0),
+                              hintStyle:
+                                  TextStyle(color: Colors.grey, fontSize: 15.0),
                             ),
                           ),
                           SizedBox(
@@ -253,8 +251,8 @@ class _TopupState extends State<Topup> {
                                 ),
                               ),
                               hintText: 'Investment',
-                              hintStyle: TextStyle(
-                                  color: Colors.grey, fontSize: 15.0),
+                              hintStyle:
+                                  TextStyle(color: Colors.grey, fontSize: 15.0),
                             ),
                           ),
                           SizedBox(
@@ -292,8 +290,7 @@ class _TopupState extends State<Topup> {
                                 ),
                                 onPressed: () {
                                   showSearch(
-                                      context: context,
-                                      delegate: DataSearch());
+                                      context: context, delegate: DataSearch());
                                 },
                               ),
                               focusedBorder: UnderlineInputBorder(
@@ -307,8 +304,8 @@ class _TopupState extends State<Topup> {
                                 ),
                               ),
                               hintText: 'Referral ID ',
-                              hintStyle: TextStyle(
-                                  color: Colors.grey, fontSize: 15.0),
+                              hintStyle:
+                                  TextStyle(color: Colors.grey, fontSize: 15.0),
                             ),
                           ),
                           SizedBox(
@@ -396,7 +393,7 @@ class DataSearch extends SearchDelegate<String> {
             onTap: () {
               showResults(context);
             },
-            leading: Icon(Icons.cloud_done),
+            leading: Icon(Icons.search),
             title: RichText(
               text: TextSpan(
                 text: suggestionList[index].substring(0, query.length),
