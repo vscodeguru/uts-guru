@@ -34,7 +34,7 @@ class RechargeBookingWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                 Navigator.of(context).pushNamed("/registration2");
+                 Navigator.of(context).pushNamed("/topup");
                 },
                 child: new TicketCardWidget(
                   margin: EdgeInsets.only(right: 10),

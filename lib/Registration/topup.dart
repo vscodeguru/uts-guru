@@ -1,19 +1,16 @@
-import 'package:UTS/Searchable/Searchabledropdown.dart';
 import 'package:UTS/Utils/helper.dart';
-import 'package:UTS/progressbutton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import '../fabanimations.dart';
-import '../referralidSearch.dart';
 
-class RegistrationPage extends StatefulWidget {
-  RegistrationPage({Key key}) : super(key: key);
+class Topup extends StatefulWidget {
+  Topup({Key key}) : super(key: key);
 
-  _RegistrationPageState createState() => _RegistrationPageState();
+  _TopupState createState() => _TopupState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _TopupState extends State<Topup> {
   String dropdownValue = 'Male';
   var nameController = TextEditingController();
   var dateController = TextEditingController();
@@ -61,7 +58,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   child: ShowUp(
                     delay: 3,
                     child: Text(
-                      'Registration',
+                      'Topup',
                       style: TextStyle(
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
@@ -75,6 +72,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     image: DecorationImage(
+                      //    fit: BoxFit.cover,
                       image: ExactAssetImage(
                         'assets/Images/crowd.png',
                       ),
@@ -130,8 +128,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           DropdownButtonFormField<String>(
                             decoration: InputDecoration(
                               hintText: 'Enter your City',
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 15.0),
+                              hintStyle: TextStyle(
+                                  color: Colors.grey, fontSize: 15.0),
                               focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Helper.hexColor('#4ca7d4'),
@@ -216,18 +214,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             textInputAction: TextInputAction.next,
                             decoration: InputDecoration(
                               focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
+                                  borderSide: BorderSide(
+                                      color: Helper.hexColor('#4ca7d4'))),
                               enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Helper.hexColor('#4ca7d4'),
-                                ),
-                              ),
+                                  borderSide: BorderSide(
+                                      color: Helper.hexColor('#4ca7d4'))),
                               hintText: 'Mobile Number',
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 15.0),
+                              hintStyle: TextStyle(
+                                  color: Colors.grey, fontSize: 15.0),
                             ),
                           ),
                           SizedBox(
@@ -259,8 +253,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 ),
                               ),
                               hintText: 'Investment',
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 15.0),
+                              hintStyle: TextStyle(
+                                  color: Colors.grey, fontSize: 15.0),
                             ),
                           ),
                           SizedBox(
@@ -268,11 +262,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                           TextField(
                             onTap: () {
-                              showSearch<String>(
-                                  context: context, delegate: DataSearch()).then((data)
-                                  {
-
-                                  });
+                              showSearch(
+                                  context: context, delegate: DataSearch());
+                              //   Navigator.push<String>(context, MaterialPageRoute(
+                              //     builder: (ctx) {
+                              //      return Searchwidget();
+                              //   },
+                              //   )).then((data) {
+                              //    setState(() {
+                              //      print('tapped');
+                              //      tecCityController.text = data;
+                              //     });
+                              //  });
                             },
                             buildCounter: (BuildContext context,
                                     {int currentLength,
@@ -291,7 +292,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 ),
                                 onPressed: () {
                                   showSearch(
-                                      context: context, delegate: DataSearch());
+                                      context: context,
+                                      delegate: DataSearch());
                                 },
                               ),
                               focusedBorder: UnderlineInputBorder(
@@ -305,8 +307,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 ),
                               ),
                               hintText: 'Referral ID ',
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 15.0),
+                              hintStyle: TextStyle(
+                                  color: Colors.grey, fontSize: 15.0),
                             ),
                           ),
                           SizedBox(
@@ -314,7 +316,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                           SizedBox(
                             width: double.infinity,
-                            // child: Progress(),
                             child: RaisedButton(
                               elevation: 6,
                               color: Helper.hexColor('#4ca7d4'),
@@ -342,7 +343,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
 }
 
 class DataSearch extends SearchDelegate<String> {
-
   final id = ['ON1234we', 'ON65312ace', 'ON124cx', 'ON1234we'];
   final recentid = ['ON1234we', 'ON1234we'];
   @override
@@ -352,7 +352,6 @@ class DataSearch extends SearchDelegate<String> {
         icon: Icon(Icons.clear),
         onPressed: () {
           query = '';
-          close(context,'');
         },
       ),
     ];
@@ -373,18 +372,13 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            GestureDetector(
-              child: Text(
-                this.query,
-              ),
-            ),
-          ],
+    return Container(
+      height: 100,
+      width: 100,
+      child: Card(
+        color: Colors.red,
+        child: Center(
+          child: Text(query),
         ),
       ),
     );
@@ -410,9 +404,8 @@ class DataSearch extends SearchDelegate<String> {
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                 children: [
                   TextSpan(
-                    text: suggestionList[index].substring(query.length),
-                    style: TextStyle(color: Colors.grey),
-                  ),
+                      text: suggestionList[index].substring(query.length),
+                      style: TextStyle(color: Colors.grey)),
                 ],
               ),
             ),
