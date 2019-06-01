@@ -1,9 +1,12 @@
 import 'package:UTS/Utils/helper.dart';
+import 'package:UTS/buttonAnimation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import '../fabanimations.dart';
 import '../progressbutton.dart';
+import 'package:flutter/animation.dart';
+import 'package:flutter/scheduler.dart';
 
 class RegistrationPage extends StatefulWidget {
   RegistrationPage({Key key}) : super(key: key);
@@ -11,7 +14,27 @@ class RegistrationPage extends StatefulWidget {
   _RegistrationPageState createState() => _RegistrationPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _RegistrationPageState extends State<RegistrationPage>
+    with TickerProviderStateMixin {
+  var statusClick = 0;
+  AnimationController animationControllerButton;
+  @override
+  void initState() {
+    super.initState();
+    animationControllerButton =
+        AnimationController(duration: Duration(seconds: 3), vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    animationControllerButton.dispose();
+  }
+
+  Future<Null> playAnimation() async {
+    await animationControllerButton.forward();
+  }
+
   String dropdownValue = 'Male';
   var nameController = TextEditingController();
   var dateController = TextEditingController();
@@ -47,9 +70,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
       body: Container(
         color: Helper.hexColor('#ebf6fc'),
-        child: SingleChildScrollView(
+        child: ListView(
           scrollDirection: Axis.vertical,
-          child: Padding(
+          children: <Widget>[
+           Padding(
             padding: EdgeInsets.only(left: 10.0, right: 10.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +106,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Form(
                   child: Container(
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height * 0.79,
+                    height: MediaQuery.of(context).size.height * 0.75,
                     child: Padding(
                       padding:
                           EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
@@ -294,6 +318,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 onPressed: () {
                                   showSearch(
                                       context: context, delegate: DataSearch());
+                                  // Navigator.push<String>(context, MaterialPageRoute(
+                                  //   builder: (ctxt){
+                                  //      return SearchListExample();
+                                  //   }
+                                  // ));
                                 },
                               ),
                               focusedBorder: UnderlineInputBorder(
@@ -314,31 +343,55 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           SizedBox(
                             height: 25,
                           ),
-                          SizedBox(
-                            width: double.infinity,
-                          //p  child: Progress(),
-                            child: RaisedButton(
-                              elevation: 6.0,
-                              color: Helper.hexColor('#4ca7d4'),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0)),
-                              child: Text(
-                                'Register',
-                              ),
-                              textColor: Colors.white,
-                              onPressed: () {},
-                            ),
-                          ),
+                          statusClick == 0
+                    ? SizedBox(
+                      width: double.infinity,
+                      // child:  Progress()
+                      child: RaisedButton(
+                        elevation: 6.0,
+                        color: Helper.hexColor('#4ca7d4'),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Text(
+                          'Register',
+                        ),
+                        textColor: Colors.white,
+                        onPressed: () {
+                          setState(() {
+                            statusClick = 1;
+                          });
+                          playAnimation();
+                        },
+                      ),
+                    )
+                    : new StartAnimation(
+                        buttonController: animationControllerButton.view,
+                      ),
                         ],
                       ),
                     ),
                   ),
+                  
                 ),
+                
               ],
             ),
           ),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class Signin extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      width: 320.0,
+      height: 60.0,
+      decoration: BoxDecoration(
+          color: Colors.red[700], borderRadius: BorderRadius.circular(30.0)),
     );
   }
 }
@@ -397,7 +450,7 @@ class DataSearch extends SearchDelegate<String> {
             onTap: () {
               showResults(context);
             },
-            leading: Icon(Icons.cloud_done),
+            leading: Icon(Icons.search),
             title: RichText(
               text: TextSpan(
                 text: suggestionList[index].substring(0, query.length),
