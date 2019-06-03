@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Registration/topup.dart';
 import 'Utils/helper.dart';
 
 class StartAnimation extends StatefulWidget {
@@ -22,7 +23,7 @@ class StartAnimation extends StatefulWidget {
   final Animation ZoomAnimation;
   Widget _buildAnimation(BuildContext context, Widget child) {
     return Center(
-      child: ZoomAnimation.value <= 300
+      child: ZoomAnimation.value <= 200
           ? SizedBox(
               width: shrinkAnimationButton.value,
               // child:  Progress()
@@ -37,16 +38,21 @@ class StartAnimation extends StatefulWidget {
                         'Register',
                         style: TextStyle(color: Colors.white),
                       )
-                    : CircularProgressIndicator(
-                        strokeWidth: 1.0,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                      ),
+                    : SizedBox(
+                        height: 25.0,
+                        width: 25.0,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 1.0,
+                          value: null,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.white),
+                        )),
               ))
           : Container(
               width: ZoomAnimation.value,
               height: ZoomAnimation.value,
               decoration: BoxDecoration(
-                  color: Helper.hexColor('#4ca7d4'),
+                color: Helper.hexColor('#4ca7d4'),
                 shape: ZoomAnimation.value < 600
                     ? BoxShape.circle
                     : BoxShape.rectangle,
@@ -61,6 +67,14 @@ class StartAnimation extends StatefulWidget {
 class _StartAnimationState extends State<StartAnimation> {
   @override
   Widget build(BuildContext context) {
+    widget.buttonController.addListener(
+      () {
+        if (widget.ZoomAnimation.isCompleted) {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (BuildContext context) => Topup()));
+        }
+      },
+    );
     return new AnimatedBuilder(
       builder: widget._buildAnimation,
       animation: widget.buttonController,
