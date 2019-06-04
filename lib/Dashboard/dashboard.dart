@@ -41,7 +41,7 @@ class _DashboardState extends State<Dashboard> {
           'assets/Images/logo/uts.png',
           scale: 1.6,
         ),
-        title: Text('Universal Trading Solutions',style: TextStyle(fontSize: 15),),
+        title: Text('Universal Trading Solutions',style:TextStyle(fontSize: 15)),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.notifications),

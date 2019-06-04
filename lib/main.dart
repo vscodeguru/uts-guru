@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         "/error": (BuildContext context) => ErrorPageWidget(),
         "/search": (BuildContext context) => Searchwidget(),
-        "/registration": (BuildContext context) => RegistrationPage(),
-        "/topup": (BuildContext context) => Topup(),
+        "/registration": (BuildContext context) => RegisterationWidget(),
+        "/topup": (BuildContext context) => TopupWidget(),
       },
       debugShowCheckedModeBanner: false,
       title: 'UTS',

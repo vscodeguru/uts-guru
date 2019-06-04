@@ -17,13 +17,13 @@ class StartAnimation extends StatefulWidget {
               curve: Interval(0.550, 0.999, curve: Curves.bounceInOut)),
         ),
         super(key: key);
-
   final AnimationController buttonController;
   final Animation shrinkAnimationButton;
+
   final Animation ZoomAnimation;
   Widget _buildAnimation(BuildContext context, Widget child) {
     return Center(
-      child: ZoomAnimation.value <= 200
+      child: ZoomAnimation.value <= 340
           ? SizedBox(
               width: shrinkAnimationButton.value,
               // child:  Progress()
@@ -32,7 +32,8 @@ class StartAnimation extends StatefulWidget {
                 elevation: 6.0,
                 color: Helper.hexColor('#4ca7d4'),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
                 child: shrinkAnimationButton.value > 75.0
                     ? Text(
                         'Register',
@@ -46,9 +47,13 @@ class StartAnimation extends StatefulWidget {
                           value: null,
                           valueColor:
                               AlwaysStoppedAnimation<Color>(Colors.white),
-                        )),
-              ))
-          : Container(
+                        ),
+                      ),
+              ),
+            )
+           : Column(
+              children: <Widget>[
+                Container(
               width: ZoomAnimation.value,
               height: ZoomAnimation.value,
               decoration: BoxDecoration(
@@ -57,11 +62,16 @@ class StartAnimation extends StatefulWidget {
                     ? BoxShape.circle
                     : BoxShape.rectangle,
               ),
+             
             ),
+              ],
+            )
+       
     );
   }
 
   _StartAnimationState createState() => _StartAnimationState();
+
 }
 
 class _StartAnimationState extends State<StartAnimation> {
@@ -71,7 +81,7 @@ class _StartAnimationState extends State<StartAnimation> {
       () {
         if (widget.ZoomAnimation.isCompleted) {
           Navigator.of(context).push(
-              MaterialPageRoute(builder: (BuildContext context) => Topup()));
+              MaterialPageRoute(builder: (BuildContext context) => TopupWidget()));
         }
       },
     );
