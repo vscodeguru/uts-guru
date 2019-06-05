@@ -2,8 +2,8 @@ import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
-import '../buttonAnimation.dart';
 import '../fabanimations.dart';
+import '../referralidSearch.dart';
 
 //Full screen
 class TopupWidget extends StatelessWidget {
@@ -88,10 +88,6 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
         ),
         KeyboardAction(
           focusNode: _nodeText4,
-          displayCloseWidget: false,
-        ),
-        KeyboardAction(
-          focusNode: _nodeText5,
           closeWidget: Padding(
             padding: EdgeInsets.all(5.0),
             child: Text("CLOSE"),
@@ -244,7 +240,6 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               ),
                             ),
                             SizedBox(height: 10),
-                         
                             TextFormField(
                               focusNode: _nodeText2,
                               controller: investmentController,
@@ -278,7 +273,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             SizedBox(
                               height: 15,
                             ),
-                               TextFormField(
+                            TextFormField(
                               focusNode: _nodeText3,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
@@ -308,7 +303,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               ),
                             ),
                             SizedBox(height: 10),
-                               TextFormField(
+                            TextFormField(
                               focusNode: _nodeText4,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
@@ -339,15 +334,18 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             ),
                             SizedBox(height: 10),
                             TextField(
+                              controller: referralController,
                               onTap: () {
                                 showSearch<String>(
                                         context: context,
                                         delegate: DataSearch())
                                     .then(
                                   (data) {
-                                    setState(() {
-                                      print('tapped');
-                                    });
+                                    setState(
+                                      () {
+                                        referralController.text = data;
+                                      },
+                                    );
                                   },
                                 );
                               },
@@ -365,14 +363,18 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     color: Colors.grey,
                                   ),
                                   onPressed: () {
-                                    showSearch(
-                                        context: context,
-                                        delegate: DataSearch());
-                                    // Navigator.push<String>(context, MaterialPageRoute(
-                                    //   builder: (ctxt){
-                                    //      return SearchListExample();
-                                    //   }
-                                    // ));
+                                    showSearch<String>(
+                                            context: context,
+                                            delegate: DataSearch())
+                                        .then(
+                                      (data) {
+                                        setState(
+                                          () {
+                                            referralController.text = data;
+                                          },
+                                        );
+                                      },
+                                    );
                                   },
                                 ),
                                 focusedBorder: UnderlineInputBorder(
@@ -425,80 +427,6 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
           ],
         ),
       ),
-    );
-  }
-}
-
-class DataSearch extends SearchDelegate<String> {
-  final id = ['ON1234we', 'ON65312ace', 'ON124cx', 'ON1234we'];
-  final recentid = ['ON1234we', 'ON1234we'];
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () {
-          query = '';
-        },
-      ),
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_arrow,
-        progress: transitionAnimation,
-      ),
-      onPressed: () {
-        close(context, null);
-      },
-    );
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 100,
-      child: Card(
-        color: Colors.red,
-        child: Center(
-          child: Text(query),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    final suggestionList = query.isEmpty
-        ? recentid
-        : id
-            .where((p) => p.toLowerCase().contains(query.toLowerCase()))
-            .toList();
-    return ListView.builder(
-      itemBuilder: (context, index) => ListTile(
-            onTap: () {
-              showResults(context);
-            },
-            leading: Icon(Icons.search),
-            title: RichText(
-              text: TextSpan(
-                text: suggestionList[index].substring(0, query.length),
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                children: [
-                  TextSpan(
-                    text: suggestionList[index].substring(query.length),
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
-              ),
-            ),
-          ),
-      itemCount: suggestionList.length,
     );
   }
 }

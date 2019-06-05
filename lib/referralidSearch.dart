@@ -42,22 +42,45 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildLeading(BuildContext context) {
-                      
+    return IconButton(
+      icon: AnimatedIcon(
+        icon: AnimatedIcons.menu_arrow,
+        progress: transitionAnimation,
+      ),
+      onPressed: () {
+        close(context, null);
+      },
+    );
   }
+
   @override
   Widget buildResults(BuildContext context) {
-    
+    Navigator.pop(context, query);
   }
+
   @override
   Widget buildSuggestions(BuildContext context) {
-    final suggestionList = query.isEmpty ? recentid : id;
+    final suggestionList = query.isEmpty ? recentid : id.where((p) => p.toLowerCase().contains(query.toLowerCase())).
+            toList();
     return ListView.builder(
       itemBuilder: (context, index) => ListTile(
             onTap: () {
               Navigator.pop(context, suggestionList[index]);
             },
-            leading: Icon(Icons.cloud_done),
-            title: Text(suggestionList[index]),
+            leading: Icon(Icons.search),
+            title: RichText(
+              text: TextSpan(
+                text: suggestionList[index].substring(0, query.length),
+                style:
+                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                    text: suggestionList[index].substring(query.length),
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              ),
+            ),
           ),
       itemCount: suggestionList.length,
     );

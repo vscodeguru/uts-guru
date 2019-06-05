@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import '../buttonAnimation.dart';
 import '../fabanimations.dart';
+import '../referralidSearch.dart';
 
 //Full screen
 class RegisterationWidget extends StatelessWidget {
@@ -24,6 +25,9 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> with TickerProviderStateMixin {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool _autoValidate = false;
+
   final FocusNode _nodeText1 = FocusNode();
   final FocusNode _nodeText2 = FocusNode();
   final FocusNode _nodeText3 = FocusNode();
@@ -76,20 +80,10 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
         ),
         KeyboardAction(
           focusNode: _nodeText3,
-           onTapAction: () {
-            
-          },
         ),
         KeyboardAction(
           focusNode: _nodeText4,
-          displayCloseWidget: false,
-        ),
-        KeyboardAction(
-          focusNode: _nodeText5,
-          closeWidget: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.close),
-          ),
+          displayCloseWidget: true,
         ),
       ],
     );
@@ -166,6 +160,8 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                     ),
                   ),
                   Form(
+                    key: formKey,
+                    autovalidate: _autoValidate,
                     child: Container(
                       width: double.infinity,
                       height: MediaQuery.of(context).size.height * 0.72,
@@ -179,7 +175,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               height: 25,
                             ),
                             TextFormField(
+                              controller: nameController,
                               focusNode: _nodeText1,
+                              validator: validateName,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
                                       int maxLength,
@@ -239,6 +237,8 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               },
                               child: AbsorbPointer(
                                 child: TextFormField(
+                                  
+                                  autovalidate: _autoValidate,
                                   controller: dateController,
                                   textInputAction: TextInputAction.next,
                                   decoration: InputDecoration(
@@ -264,6 +264,8 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               height: 20,
                             ),
                             TextFormField(
+                              validator: validateMobile,
+                              controller:  mobileController,
                               focusNode: _nodeText3,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
@@ -294,8 +296,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             ),
                             SizedBox(height: 10),
                             TextFormField(
+                              validator: validateMobile,
                               focusNode: _nodeText4,
-                              controller: investmentController,
+                              controller:  investmentController,
                               textInputAction: TextInputAction.next,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
@@ -327,7 +330,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               height: 15,
                             ),
                             TextField(
-                              focusNode: _nodeText5,
+                              controller: referralController,
                               onTap: () {
                                 FocusScope.of(context)
                                     .requestFocus(new FocusNode());
@@ -336,9 +339,11 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                         delegate: DataSearch())
                                     .then(
                                   (data) {
-                                    setState(() {
-                                      print('tapped');
-                                    });
+                                    setState(
+                                      () {
+                                        referralController.text = data;
+                                      },
+                                    );
                                   },
                                 );
                               },
@@ -356,14 +361,18 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     color: Colors.grey,
                                   ),
                                   onPressed: () {
-                                    showSearch(
-                                        context: context,
-                                        delegate: DataSearch());
-                                    // Navigator.push<String>(context, MaterialPageRoute(
-                                    //   builder: (ctxt){
-                                    //      return SearchListExample();
-                                    //   }
-                                    // ));
+                                    showSearch<String>(
+                                            context: context,
+                                            delegate: DataSearch())
+                                        .then(
+                                      (data) {
+                                        setState(
+                                          () {
+                                            referralController.text = data;
+                                          },
+                                        );
+                                      },
+                                    );
                                   },
                                 ),
                                 focusedBorder: UnderlineInputBorder(
@@ -393,8 +402,8 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
               margin: statusClick == 0
                   ? EdgeInsets.symmetric(horizontal: 15)
                   : null,
-              child: statusClick == 0
-                  ? SizedBox(
+              child:
+                SizedBox(
                       width: double.infinity,
                       child: RaisedButton(
                         elevation: 6.0,
@@ -408,94 +417,124 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                         onPressed: () {
                           setState(
                             () {
+                              validateInputs();
                               statusClick = 1;
                             },
                           );
-                          playAnimation();
-                        },
+                        playAnimation();
+                        },                        
                       ),
-                    )
-                  : new StartAnimation(
+                    ),
+            
+            ),
+            StartAnimation(
                       buttonController: animationControllerButton.view,
                     ),
-            ),
           ],
         ),
       ),
     );
   }
-}
 
-class DataSearch extends SearchDelegate<String> {
-  final id = ['ON1234we', 'ON65312ace', 'ON124cx', 'ON1234we'];
-  final recentid = ['ON1234we', 'ON1234we'];
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () {
-          query = '';
-        },
-      ),
-    ];
+  String validateName(String value) {
+    if (value.isEmpty)
+      return 'Name is required';
+    else
+      return null;
   }
 
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_arrow,
-        progress: transitionAnimation,
-      ),
-      onPressed: () {
-        close(context, null);
-      },
-    );
+  String validateMobile(String value) {
+    if (value.length == 0) {
+      return "Mobile is Required";
+    } else if (value.length != 10) {
+      return "Mobile number must 10 digits";
+    }
+    return null;
   }
 
-  @override
-  Widget buildResults(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 100,
-      child: Card(
-        color: Colors.red,
-        child: Center(
-          child: Text(query),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    final suggestionList = query.isEmpty
-        ? recentid
-        : id
-            .where((p) => p.toLowerCase().contains(query.toLowerCase()))
-            .toList();
-    return ListView.builder(
-      itemBuilder: (context, index) => ListTile(
-            onTap: () {
-              showResults(context);
-            },
-            leading: Icon(Icons.search),
-            title: RichText(
-              text: TextSpan(
-                text: suggestionList[index].substring(0, query.length),
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                children: [
-                  TextSpan(
-                    text: suggestionList[index].substring(query.length),
-                    style: TextStyle(color: Colors.grey),
-                  ),
-                ],
-              ),
-            ),
-          ),
-      itemCount: suggestionList.length,
-    );
+  void validateInputs() {
+    final form = formKey.currentState;
+    if (formKey.currentState.validate()) {
+      form.save();
+      
+    } else {
+      setState(() {
+        _autoValidate = true;
+      });
+    }
   }
 }
+
+// class DataSearch extends SearchDelegate<String> {
+//   final id = ['ON1234we', 'ON65312ace', 'ON124cx', 'ON1234we'];
+//   final recentid = ['ON1234we', 'ON1234we'];
+//   @override
+//   List<Widget> buildActions(BuildContext context) {
+//     return [
+//       IconButton(
+//         icon: Icon(Icons.clear),
+//         onPressed: () {
+//           query = '';
+//         },
+//       ),
+//     ];
+//   }
+
+//   @override
+//   Widget buildLeading(BuildContext context) {
+//     return IconButton(
+//       icon: AnimatedIcon(
+//         icon: AnimatedIcons.menu_arrow,
+//         progress: transitionAnimation,
+//       ),
+//       onPressed: () {
+//         close(context, null);
+//       },
+//     );
+//   }
+
+//   @override
+//   Widget buildResults(BuildContext context) {
+//     return Container(
+//       height: 100,
+//       width: 100,
+//       child: Card(
+//         color: Colors.red,
+//         child: Center(
+//           child: Text(query),
+//         ),
+//       ),
+//     );
+//   }
+
+//   @override
+//   Widget buildSuggestions(BuildContext context) {
+//     final suggestionList = query.isEmpty
+//         ? recentid
+//         : id
+//             .where((p) => p.toLowerCase().contains(query.toLowerCase()))
+//             .toList();
+//     return ListView.builder(
+//       itemBuilder: (context, index) => ListTile(
+//             onTap: () {
+//               showResults(context);
+//             },
+//             leading: Icon(Icons.search),
+//             title: RichText(
+//               text: TextSpan(
+//                 text: suggestionList[index].substring(0, query.length),
+//                 style:
+//                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+//                 children: [
+//                   TextSpan(
+//                     text: suggestionList[index].substring(query.length),
+//                     style: TextStyle(color: Colors.grey),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//       itemCount: suggestionList.length,
+//     );
+//   }
+// }
