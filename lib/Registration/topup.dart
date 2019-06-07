@@ -1,9 +1,9 @@
+import 'package:UTS/Animations/fabanimations.dart';
+import 'package:UTS/Searchable/referralidSearch.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
-import '../fabanimations.dart';
-import '../referralidSearch.dart';
 
 //Full screen
 class TopupWidget extends StatelessWidget {
@@ -24,6 +24,8 @@ class Content extends StatefulWidget {
 }
 
 class _ContentState extends State<Content> with TickerProviderStateMixin {
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool _autoValidate = false;
   final FocusNode _nodeText1 = FocusNode();
   final FocusNode _nodeText2 = FocusNode();
   final FocusNode _nodeText3 = FocusNode();
@@ -168,9 +170,11 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                     ),
                   ),
                   Form(
+                    key: formKey,
+                    autovalidate: _autoValidate,
                     child: Container(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.72,
+                      height: MediaQuery.of(context).size.height * 0.80,
                       child: Padding(
                         padding:
                             EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
@@ -186,6 +190,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               },
                               child: AbsorbPointer(
                                 child: TextFormField(
+                                  validator: validateDate,
                                   controller: dateController,
                                   textInputAction: TextInputAction.next,
                                   decoration: InputDecoration(
@@ -211,6 +216,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               height: 20,
                             ),
                             TextFormField(
+                              validator: validateCustomerID,
                               focusNode: _nodeText1,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
@@ -241,6 +247,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             ),
                             SizedBox(height: 10),
                             TextFormField(
+                              validator: validateInvestment,
                               focusNode: _nodeText2,
                               controller: investmentController,
                               textInputAction: TextInputAction.next,
@@ -274,17 +281,13 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               height: 15,
                             ),
                             TextFormField(
+                              validator: validateName,
                               focusNode: _nodeText3,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
                                       int maxLength,
                                       bool isFocused}) =>
                                   null,
-                              maxLength: 10,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                WhitelistingTextInputFormatter.digitsOnly
-                              ],
                               textInputAction: TextInputAction.next,
                               decoration: InputDecoration(
                                 focusedBorder: UnderlineInputBorder(
@@ -304,6 +307,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             ),
                             SizedBox(height: 10),
                             TextFormField(
+                              validator: validateMobile,
                               focusNode: _nodeText4,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
@@ -416,10 +420,10 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                   onPressed: () {
                     setState(
                       () {
-                        statusClick = 1;
+                        validateInputs();
                       },
                     );
-                    playAnimation();
+                    formKey.currentState.reset();
                   },
                 ),
               ),
@@ -428,5 +432,61 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
         ),
       ),
     );
+  }
+
+  String validateName(String value) {
+    if (value.isEmpty)
+      return 'Name is required';
+    else
+      return null;
+  }
+
+  String validateCustomerID(String value) {
+    if (value.isEmpty)
+      return 'Id is required';
+    else
+      return null;
+  }
+
+  String validateDate(String value) {
+    if (value.isEmpty)
+      return 'Date is required';
+    else
+      return null;
+  }
+
+  String validateInvestment(String value) {
+    if (value.isEmpty)
+      return 'Investment is requried';
+    else
+      return null;
+  }
+
+  String validateGender(value) {
+    if (value == null) {
+      return 'Choose your gender';
+    }
+  }
+
+  String validateMobile(String value) {
+    if (value.length == 0) {
+      return "Mobile is Required";
+    } else if (value.length != 10) {
+      return "Mobile number must 10 digits";
+    }
+    return null;
+  }
+
+  void validateInputs() {
+    final form = formKey.currentState;
+    if (formKey.currentState.validate()) {
+      statusClick = 1;
+      playAnimation();
+      formKey.currentState.reset();
+    } else {
+      setState(() {
+        _autoValidate = true;
+      });
+    }
   }
 }

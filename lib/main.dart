@@ -1,5 +1,4 @@
 import 'package:UTS/Error/ErrorFile.dart';
-import 'package:UTS/Searchable/Searchabledropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:UTS/SplashScreen/splash.dart';
@@ -19,7 +18,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: <String, WidgetBuilder>{
         "/error": (BuildContext context) => ErrorPageWidget(),
-        "/search": (BuildContext context) => Searchwidget(),
         "/registration": (BuildContext context) => RegisterationWidget(),
         "/topup": (BuildContext context) => TopupWidget(),
       },

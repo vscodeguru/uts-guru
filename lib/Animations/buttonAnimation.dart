@@ -1,7 +1,6 @@
+import 'package:UTS/Registration/topup.dart';
+import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
-
-import 'Registration/topup.dart';
-import 'Utils/helper.dart';
 
 class StartAnimation extends StatefulWidget {
   StartAnimation(
@@ -26,44 +25,45 @@ class StartAnimation extends StatefulWidget {
   final String investment;
   Widget _buildAnimation(BuildContext context, Widget child) {
     return Center(
-        child: ZoomAnimation.value <= 340
-            ? SizedBox(
-                width: shrinkAnimationButton.value,
-                // child:  Progress()
-                child: RaisedButton(
-                  onPressed: () {},
-                  elevation: 6.0,
-                  color: Helper.hexColor('#4ca7d4'),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: shrinkAnimationButton.value > 75.0
-                      ? Text(
-                          'Register',
-                          style: TextStyle(color: Colors.white),
-                        )
-                      : SizedBox(
-                          height: 25.0,
-                          width: 25.0,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 1.0,
-                            value: null,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
-                          ),
-                        ),
+      child: ZoomAnimation.value <= 340
+          ? SizedBox(
+              width: shrinkAnimationButton.value,
+              // child:  Progress()
+              child: RaisedButton(
+                onPressed: () {},
+                elevation: 6.0,
+                color: Helper.hexColor('#4ca7d4'),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
                 ),
-              )
-            : Container(
-                width: ZoomAnimation.value,
-                height: ZoomAnimation.value,
-                decoration: BoxDecoration(
+                child: shrinkAnimationButton.value > 75.0
+                    ? Text(
+                        'Register',
+                        style: TextStyle(color: Colors.white),
+                      )
+                    : SizedBox(
+                        height: 25.0,
+                        width: 25.0,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 1.0,
+                          value: null,
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.white),
+                        ),
+                      ),
+              ),
+            )
+          : Container(
+              width: ZoomAnimation.value,
+              height: ZoomAnimation.value,
+              decoration: BoxDecoration(
                   color: Helper.hexColor('#4ca7d4'),
                   shape: ZoomAnimation.value < 600
                       ? BoxShape.circle
-                      : BoxShape.rectangle,
-                ),
-              ));
+                      : BoxShape.rectangle),
+              child: Icon(Icons.check_circle, size: 100),
+            ),
+    );
   }
 
   _StartAnimationState createState() => _StartAnimationState();

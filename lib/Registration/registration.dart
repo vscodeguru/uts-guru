@@ -1,10 +1,10 @@
+import 'package:UTS/Animations/buttonAnimation.dart';
+import 'package:UTS/Animations/fabanimations.dart';
+import 'package:UTS/Searchable/referralidSearch.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
-import '../buttonAnimation.dart';
-import '../fabanimations.dart';
-import '../referralidSearch.dart';
 
 //Full screen
 class RegisterationWidget extends StatelessWidget {
@@ -164,7 +164,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                     autovalidate: _autoValidate,
                     child: Container(
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.72,
+                      height: MediaQuery.of(context).size.height * 0.80,
                       child: Padding(
                         padding:
                             EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
@@ -177,7 +177,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             TextFormField(
                               controller: nameController,
                               focusNode: _nodeText1,
-                              validator: validateName,
+                              validator: (value) {},
                               buildCounter: (BuildContext context,
                                       {int currentLength,
                                       int maxLength,
@@ -206,6 +206,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               height: 8,
                             ),
                             DropdownButtonFormField(
+                              validator: validateGender,
                               decoration: InputDecoration(
                                 hintText: 'Select your Gender',
                                 hintStyle: TextStyle(
@@ -237,9 +238,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                               },
                               child: AbsorbPointer(
                                 child: TextFormField(
-                                  
                                   autovalidate: _autoValidate,
                                   controller: dateController,
+                                  validator: validateDate,
                                   textInputAction: TextInputAction.next,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
@@ -265,7 +266,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             ),
                             TextFormField(
                               validator: validateMobile,
-                              controller:  mobileController,
+                              controller: mobileController,
                               focusNode: _nodeText3,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
@@ -296,9 +297,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             ),
                             SizedBox(height: 10),
                             TextFormField(
-                              validator: validateMobile,
+                              validator: validateInvestment,
                               focusNode: _nodeText4,
-                              controller:  investmentController,
+                              controller: investmentController,
                               textInputAction: TextInputAction.next,
                               buildCounter: (BuildContext context,
                                       {int currentLength,
@@ -402,8 +403,8 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
               margin: statusClick == 0
                   ? EdgeInsets.symmetric(horizontal: 15)
                   : null,
-              child:
-                SizedBox(
+              child: statusClick == 0
+                  ? SizedBox(
                       width: double.infinity,
                       child: RaisedButton(
                         elevation: 6.0,
@@ -418,18 +419,15 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                           setState(
                             () {
                               validateInputs();
-                              statusClick = 1;
                             },
                           );
-                        playAnimation();
-                        },                        
+                        },
                       ),
-                    ),
-            
-            ),
-            StartAnimation(
+                    )
+                  : new StartAnimation(
                       buttonController: animationControllerButton.view,
                     ),
+            ),
           ],
         ),
       ),
@@ -441,6 +439,26 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
       return 'Name is required';
     else
       return null;
+  }
+
+  String validateDate(String value) {
+    if (value.isEmpty)
+      return 'Date is required';
+    else
+      return null;
+  }
+
+  String validateInvestment(String value) {
+    if (value.isEmpty)
+      return 'Investment is requried';
+    else
+      return null;
+  }
+
+  String validateGender(value) {
+    if (value == null) {
+      return 'Choose your gender';
+    }
   }
 
   String validateMobile(String value) {
@@ -455,8 +473,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   void validateInputs() {
     final form = formKey.currentState;
     if (formKey.currentState.validate()) {
-      form.save();
-      
+      statusClick = 1;
+      playAnimation();
+      formKey.currentState.reset();
     } else {
       setState(() {
         _autoValidate = true;
@@ -464,77 +483,3 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
     }
   }
 }
-
-// class DataSearch extends SearchDelegate<String> {
-//   final id = ['ON1234we', 'ON65312ace', 'ON124cx', 'ON1234we'];
-//   final recentid = ['ON1234we', 'ON1234we'];
-//   @override
-//   List<Widget> buildActions(BuildContext context) {
-//     return [
-//       IconButton(
-//         icon: Icon(Icons.clear),
-//         onPressed: () {
-//           query = '';
-//         },
-//       ),
-//     ];
-//   }
-
-//   @override
-//   Widget buildLeading(BuildContext context) {
-//     return IconButton(
-//       icon: AnimatedIcon(
-//         icon: AnimatedIcons.menu_arrow,
-//         progress: transitionAnimation,
-//       ),
-//       onPressed: () {
-//         close(context, null);
-//       },
-//     );
-//   }
-
-//   @override
-//   Widget buildResults(BuildContext context) {
-//     return Container(
-//       height: 100,
-//       width: 100,
-//       child: Card(
-//         color: Colors.red,
-//         child: Center(
-//           child: Text(query),
-//         ),
-//       ),
-//     );
-//   }
-
-//   @override
-//   Widget buildSuggestions(BuildContext context) {
-//     final suggestionList = query.isEmpty
-//         ? recentid
-//         : id
-//             .where((p) => p.toLowerCase().contains(query.toLowerCase()))
-//             .toList();
-//     return ListView.builder(
-//       itemBuilder: (context, index) => ListTile(
-//             onTap: () {
-//               showResults(context);
-//             },
-//             leading: Icon(Icons.search),
-//             title: RichText(
-//               text: TextSpan(
-//                 text: suggestionList[index].substring(0, query.length),
-//                 style:
-//                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-//                 children: [
-//                   TextSpan(
-//                     text: suggestionList[index].substring(query.length),
-//                     style: TextStyle(color: Colors.grey),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//       itemCount: suggestionList.length,
-//     );
-//   }
-// }
