@@ -59,6 +59,11 @@ flutter:
     - assets/Images/Chit.png
     - assets/Images/ticket/flight.svg
     - assets/Images/ticket/van.svg
+    - assets/Images/withdraw.png
+    - assets/Images/bitcoin.png
+    - assets/Images/transfer.png
+    - assets/Images/transfer.svg
+    - assets/Images/moneysales.jpg
     - assets/Images/ticket/bus.svg
     - assets/Images/ticket/tourist-1.svg
     - assets/Images/ticket/rupee.svg
