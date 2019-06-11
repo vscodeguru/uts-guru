@@ -1,4 +1,4 @@
-import 'package:UTS/Animations/buttonAnimation.dart';
+import 'package:UTS/Animations/RegistrationButton.dart';
 import 'package:UTS/Animations/fabanimations.dart';
 import 'package:UTS/Searchable/referralidSearch.dart';
 import 'package:UTS/Utils/helper.dart';

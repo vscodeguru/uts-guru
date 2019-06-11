@@ -1,3 +1,4 @@
+import 'package:UTS/Animations/TopupButton.dart';
 import 'package:UTS/Animations/fabanimations.dart';
 import 'package:UTS/Searchable/referralidSearch.dart';
 import 'package:UTS/Utils/helper.dart';
@@ -340,6 +341,8 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                             TextField(
                               controller: referralController,
                               onTap: () {
+                                FocusScope.of(context)
+                                    .requestFocus(new FocusNode());
                                 showSearch<String>(
                                         context: context,
                                         delegate: DataSearch())
@@ -405,28 +408,33 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 15),
-              child: SizedBox(
-                width: double.infinity,
-                child: RaisedButton(
-                  elevation: 6.0,
-                  color: Helper.hexColor('#4ca7d4'),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0)),
-                  child: Text(
-                    'Register',
-                  ),
-                  textColor: Colors.white,
-                  onPressed: () {
-                    setState(
-                      () {
-                        validateInputs();
-                      },
-                    );
-                    formKey.currentState.reset();
-                  },
-                ),
-              ),
+              margin: statusClick == 0
+                  ? EdgeInsets.symmetric(horizontal: 15)
+                  : null,
+              child: statusClick == 0
+                  ? SizedBox(
+                      width: double.infinity,
+                      child: RaisedButton(
+                        elevation: 6.0,
+                        color: Helper.hexColor('#4ca7d4'),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Text(
+                          'Register',
+                        ),
+                        textColor: Colors.white,
+                        onPressed: () {
+                          setState(
+                            () {
+                              validateInputs();
+                            },
+                          );
+                        },
+                      ),
+                    )
+                  : new TopupStartAnimation(
+                      buttonController: animationControllerButton.view,
+                    ),
             ),
           ],
         ),
@@ -482,7 +490,6 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
     if (formKey.currentState.validate()) {
       statusClick = 1;
       playAnimation();
-      formKey.currentState.reset();
     } else {
       setState(() {
         _autoValidate = true;

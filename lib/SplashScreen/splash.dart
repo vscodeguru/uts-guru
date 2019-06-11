@@ -1,10 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:UTS/Dashboard/dashboard.dart';
 import 'package:UTS/utils/helper.dart';
-
-import '../dashboardprofile.dart';
 
 class SplashWidget extends StatefulWidget {
   const SplashWidget({Key key}) : super(key: key);
@@ -27,7 +24,7 @@ class _SplashWidgetState extends State<SplashWidget> {
 
   onDoneLoading() async {
     Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => UserProfile()));
+        .push(MaterialPageRoute(builder: (context) => Dashboard()));
   }
 
   @override
