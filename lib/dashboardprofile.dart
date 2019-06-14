@@ -1,7 +1,6 @@
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'containerWidget1.dart';
 import 'containerWidget3.dart';
@@ -22,6 +21,7 @@ class _UserProfileState extends State<UserProfile> {
         child: Column(
           children: <Widget>[
             new Widget3(),
+          
           ],
         ),
       ),
@@ -59,5 +59,16 @@ class Widget3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new ContainerWidget3();
+  }
+}
+class VerticalSeparator extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+        margin: new EdgeInsets.symmetric(vertical: 4.0),
+        height: 80.0,
+        width: 1.0,
+        color: Colors.deepOrange
+    );
   }
 }
