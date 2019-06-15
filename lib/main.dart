@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:UTS/SplashScreen/splash.dart';
 
+import 'InvestmentDetails/dashboardprofile.dart';
 import 'Registration/registration.dart';
 import 'Registration/topup.dart';
-import 'dashboardprofile.dart';
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);

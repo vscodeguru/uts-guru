@@ -7,79 +7,6 @@ class ProductWidget extends StatelessWidget {
     return horizontalCard(context);
   }
 
-  Widget verticalCard(BuildContext context) {
-    return Container(
-      height: 400,
-      width: MediaQuery.of(context).size.width,
-      child: ListView(
-        physics: NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              GestureDetector(
-                onTap: () {
-                  print('Tapped');
-                },
-                child: Stack(
-                  children: <Widget>[
-                    Card(
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset('assets/Images/bank.jpg'),
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.10,
-                      left: MediaQuery.of(context).size.width * 0.08,
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            'Universal\n Trading Solutions',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  print('Tapped');
-                },
-                child: Stack(
-                  children: <Widget>[
-                    Card(
-                      child: Column(
-                        children: <Widget>[
-                          Image.asset('assets/Images/Chit.png')
-                        ],
-                      ),
-                    ),
-                    Positioned(
-                      top: MediaQuery.of(context).size.height * 0.12,
-                      left: MediaQuery.of(context).size.width * 0.56,
-                      child: Text(
-                        'Universal\n Chit Funds',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                        textAlign: TextAlign.center,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget horizontalCard(BuildContext context) {
     var _width = ((MediaQuery.of(context).size.width - 30) / 2);
@@ -90,7 +17,7 @@ class ProductWidget extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-            Navigator.of(context).pushNamed("/error");
+              Navigator.of(context).pushNamed("/registratioDashboard");
             },
             child: new Productcard(
               height: _height,
@@ -104,7 +31,7 @@ class ProductWidget extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-            Navigator.of(context).pushNamed("/error");
+              Navigator.of(context).pushNamed("/error");
             },
             child: new Productcard(
               height: _height,

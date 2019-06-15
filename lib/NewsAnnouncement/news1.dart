@@ -59,10 +59,10 @@ class ListView2 extends StatelessWidget {
                 ),
                 new Positioned(
                   top: 100.0,
-                  left: 15.0,
+                  left: 10.0,
                   child: new Container(
-                    height: 40.0,
-                    width: 40.0,
+                    height: 50.0,
+                    width: 50.0,
                     decoration: new BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
@@ -76,7 +76,7 @@ class ListView2 extends StatelessWidget {
 
                         image: new DecorationImage(
                           image: new ExactAssetImage('assets/Images/wallet.png',
-                              scale: 10.0),
+                              scale: 8.0),
                           // fit: BoxFit.cover,
                         ),
                         // color: Colors.pinkAccent,
@@ -133,10 +133,10 @@ class ListView2 extends StatelessWidget {
                 ),
                 new Positioned(
                   top: 100.0,
-                  left: 15.0,
+                  left: 10.0,
                   child: new Container(
-                    height: 40.0,
-                    width: 40.0,
+                    height: 50.0,
+                    width: 50.0,
                     decoration: new BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
@@ -149,7 +149,7 @@ class ListView2 extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           image: ExactAssetImage('assets/Images/cash-back.png',
-                              scale: 10.0),
+                              scale: 8.0),
                         ),
                       ),
                     ),
@@ -204,10 +204,10 @@ class ListView2 extends StatelessWidget {
                 ),
                 new Positioned(
                   top: 100.0,
-                  left: 15.0,
+                  left: 10.0,
                   child: new Container(
-                    height: 40.0,
-                    width: 40.0,
+                    height: 50.0,
+                    width: 50.0,
                     decoration: new BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
@@ -220,7 +220,7 @@ class ListView2 extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           image: ExactAssetImage('assets/Images/wallet (1).png',
-                              scale: 10.0),
+                              scale: 8.0),
                         ),
                       ),
                     ),
@@ -275,10 +275,10 @@ class ListView2 extends StatelessWidget {
                 ),
                 new Positioned(
                   top: 100.0,
-                  left: 15.0,
+                  left: 10.0,
                   child: new Container(
-                    height: 40.0,
-                    width: 40.0,
+                    height: 50.0,
+                    width: 50.0,
                     decoration: new BoxDecoration(
                       shape: BoxShape.circle,
                       color: Colors.white,
@@ -291,7 +291,7 @@ class ListView2 extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                           image: ExactAssetImage('assets/Images/agreement.png',
-                              scale: 10.0),
+                              scale: 8.0),
                         ),
                       ),
                     ),

@@ -1,6 +1,6 @@
+import 'package:UTS/InvestmentDetails/dashboardprofile.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
-import '../dashboardprofile.dart';
 
 class TopupStartAnimation extends StatefulWidget {
   TopupStartAnimation(

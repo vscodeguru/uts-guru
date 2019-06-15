@@ -11,7 +11,6 @@ class RechargeBookingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       margin: EdgeInsets.only(left: 10, right: 10),
       height: MediaQuery.of(context).size.height * 0.12,
@@ -23,7 +22,7 @@ class RechargeBookingWidget extends StatelessWidget {
             children: <Widget>[
               GestureDetector(
                 onTap: () {
-                Navigator.of(context).pushNamed("/registration");
+                  Navigator.of(context).pushNamed("/error");
                 },
                 child: new TicketCardWidget(
                   margin: EdgeInsets.only(right: 10),
@@ -34,7 +33,7 @@ class RechargeBookingWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                 Navigator.of(context).pushNamed("/topup");
+                  Navigator.of(context).pushNamed("/error");
                 },
                 child: new TicketCardWidget(
                   margin: EdgeInsets.only(right: 10),
@@ -45,7 +44,7 @@ class RechargeBookingWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                 Navigator.of(context).pushNamed("/registratioDashboard");
+                  Navigator.of(context).pushNamed("/error");
                 },
                 child: new TicketCardWidget(
                   margin: EdgeInsets.only(right: 10),
@@ -56,7 +55,7 @@ class RechargeBookingWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                Navigator.of(context).pushNamed("/error");
+                  Navigator.of(context).pushNamed("/error");
                 },
                 child: new TicketCardWidget(
                   margin: EdgeInsets.only(right: 10),
@@ -78,7 +77,7 @@ class RechargeBookingWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                 Navigator.of(context).pushNamed("/error");
+                  Navigator.of(context).pushNamed("/error");
                 },
                 child: new TicketCardWidget(
                   color: Helper.hexColor('#3498db'),

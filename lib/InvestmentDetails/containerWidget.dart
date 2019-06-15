@@ -1,18 +1,17 @@
+import 'package:UTS/NewsAnnouncement/news1.dart';
+import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import 'Utils/helper.dart';
 
 
-class ContainerWidget2 extends StatelessWidget {
-  const ContainerWidget2({
+class InvestmentWidget extends StatelessWidget {
+  const InvestmentWidget({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 1.34,
+      height: MediaQuery.of(context).size.height * 2.22,
       child: Stack(
         children: <Widget>[
           Container(
@@ -21,164 +20,204 @@ class ContainerWidget2 extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: ExactAssetImage('assets/Images/slider/movie.jpg'),
+                image: ExactAssetImage('assets/Images/fin.jpg'),
               ),
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.32,
-            left: 8,
-            child: Text(
-              'Details About Payment',
-              style: TextStyle(fontSize: 18),
-            ),
-          ),
-          Positioned.fill(
-            top: MediaQuery.of(context).size.height * 0.37,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: <Widget>[
-                Column(
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            FloatingActionButton(
-                              heroTag: "btn1",
-                              backgroundColor: Helper.hexColor('#673BB7'),
-                              child: SvgPicture.asset(
-                                'assets/Images/contract.svg',
-                                height: 27,
-                                width: 27,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {},
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text('Registration')
-                          ],
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            FloatingActionButton(
-                              heroTag: "btn2",
-                              backgroundColor: Helper.hexColor('#673BB7'),
-                              child: SvgPicture.asset(
-                                'assets/Images/transfer (1).svg',
-                                height: 27,
-                                width: 27,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {},
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text('Topup')
-                          ],
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            FloatingActionButton(
-                              heroTag: "btn3",
-                            backgroundColor: Helper.hexColor('#673BB7'),
-                              child: SvgPicture.asset(
-                                'assets/Images/withdraw.svg',
-                                height: 27,
-                                width: 27,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {},
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(' Withdraw')
-                          ],
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            FloatingActionButton(
-                              heroTag: "btn4",
-                             backgroundColor: Helper.hexColor('#673BB7'),
-                              child: Image.asset('assets/Images/save.png',
-                                  scale: 15.0, color: Colors.white),
-                              onPressed: () {},
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text(' Transfer')
-                          ],
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            FloatingActionButton(
-                              child: SvgPicture.asset(
-                                'assets/Images/man (1).svg',
-                                height: 27,
-                                width: 27,
-                                color: Colors.white,
-                              ),
-                              heroTag: "btn5",
-                              backgroundColor: Helper.hexColor('#673BB7'),
-                              onPressed: () {},
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text('Profile')
-                          ],
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            FloatingActionButton(
-                              heroTag: "btn6",
-                              backgroundColor: Helper.hexColor('#673BB7'),
-                              child: SvgPicture.asset(
-                                'assets/Images/complaint.svg',
-                                height: 27,
-                                width: 27,
-                                color: Colors.white,
-                              ),
-                              onPressed: () {},
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            Text('Complaints')
-                          ],
-                        )
-                      ],
-                    ),
-                  ],
+            top: MediaQuery.of(context).size.height * 0.24,
+            width: MediaQuery.of(context).size.width * 1.09,
+            height: MediaQuery.of(context).size.height * 0.12,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 16, right: 48),
+              child: Card(
+                elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
                 ),
-              ],
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      SizedBox(
+                        width: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed("/registration");
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset(
+                              'assets/Images/agreement.png',
+                              scale: 8,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Registration',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        height: 55.0,
+                        width: 1.0,
+                        color: Colors.grey[350],
+                        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed("/topup");
+                        },
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Image.asset(
+                              'assets/Images/wallet (1).png',
+                              scale: 8,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Topup',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Container(
+                        height: 55.0,
+                        width: 1.0,
+                        color: Colors.grey[350],
+                        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/Images/wallet.png',
+                            scale: 8,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Withdraw',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        height: 55.0,
+                        width: 1.0,
+                        color: Colors.grey[350],
+                        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/Images/cash-back.png',
+                            scale: 8,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Transfer',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        height: 55.0,
+                        width: 1.0,
+                        color: Colors.grey[350],
+                        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/Images/group.png',
+                            scale: 8,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Profile',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+ 
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Container(
+                        height: 55.0,
+                        width: 1.0,
+                        color: Colors.grey[350],
+                        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Image.asset(
+                            'assets/Images/complaint.png',
+                            scale: 8,
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            'Complaint',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.53,
+            top: MediaQuery.of(context).size.height * 0.40,
             left: 10,
             child: Text(
               'List of Payment Details',
@@ -186,8 +225,8 @@ class ContainerWidget2 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.58,
-            left: 8,
+            top: MediaQuery.of(context).size.height * 0.45,
+            left: MediaQuery.of(context).size.width * 0.02,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -252,8 +291,8 @@ class ContainerWidget2 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.75,
-            left: 8,
+            top: MediaQuery.of(context).size.height * 0.60,
+            left: MediaQuery.of(context).size.width * 0.02,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -318,7 +357,7 @@ class ContainerWidget2 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.93,
+            top: MediaQuery.of(context).size.height * 0.78,
             left: 10,
             child: Text(
               'Details',
@@ -326,8 +365,8 @@ class ContainerWidget2 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.98,
-            left: 8,
+            top: MediaQuery.of(context).size.height * 0.83,
+            left: MediaQuery.of(context).size.width * 0.02,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -418,8 +457,8 @@ class ContainerWidget2 extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 1.16,
-            left: 8,
+            top: MediaQuery.of(context).size.height * 1.00,
+            left: MediaQuery.of(context).size.width * 0.02,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
@@ -507,8 +546,29 @@ class ContainerWidget2 extends StatelessWidget {
               ],
             ),
           ),
+          Positioned(
+            top: MediaQuery.of(context).size.height * 1.19,
+            left: 10,
+            child: Text(
+              'News & Announcement',
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          new News1()
         ],
       ),
     );
+  }
+}
+
+class News1 extends StatelessWidget {
+  const News1({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+        top: MediaQuery.of(context).size.height * 1.24, child: new ListView2());
   }
 }
