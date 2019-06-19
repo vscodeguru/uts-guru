@@ -2,7 +2,6 @@ import 'package:UTS/NewsAnnouncement/news1.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 
-
 class InvestmentWidget extends StatelessWidget {
   const InvestmentWidget({
     Key key,
@@ -11,7 +10,7 @@ class InvestmentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 2.22,
+      height: MediaQuery.of(context).size.height * 2.39,
       child: Stack(
         children: <Widget>[
           Container(
@@ -60,7 +59,7 @@ class InvestmentWidget extends StatelessWidget {
                             Text(
                               'Registration',
                               style: TextStyle(fontWeight: FontWeight.bold),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -178,7 +177,6 @@ class InvestmentWidget extends StatelessWidget {
                           Text(
                             'Profile',
                             style: TextStyle(fontWeight: FontWeight.bold),
- 
                           )
                         ],
                       ),
@@ -360,96 +358,115 @@ class InvestmentWidget extends StatelessWidget {
             top: MediaQuery.of(context).size.height * 0.78,
             left: 10,
             child: Text(
-              'Details',
+              'For Support',
               style: TextStyle(fontSize: 18),
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.83,
-            left: MediaQuery.of(context).size.width * 0.02,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            top: MediaQuery.of(context).size.height * 0.84,
+            left: MediaQuery.of(context).size.width * 0.04,
+            right: MediaQuery.of(context).size.width * 0.04,
+            child: Column(
               children: <Widget>[
                 Container(
-                  height: 100,
-                  width: 170,
-                  child: Card(
-                    elevation: 10,
-                    color: Colors.grey[50],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        verticalDirection: VerticalDirection.down,
-                        children: <Widget>[
-                          Icon(
-                            Icons.account_balance,
-                            size: 25,
-                            color: Helper.hexColor('#27ae60'),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'Govermental Affairs',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 13),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Text(
-                            '1,00,000',
-                            style: TextStyle(fontSize: 13),
-                          ),
-                        ],
-                      ),
+                  width: 390,
+                  height: 230,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      Helper.buildBoxShadow(
+                          blurRadius: 2.0, spreadRadius: 0.0, color: '#6f6f6f')
+                    ],
+                    image: DecorationImage(
+                      image: AssetImage('assets/Images/support.jpg'),
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 100,
-                  width: 170,
-                  child: Card(
-                    elevation: 10,
-                    color: Colors.grey[50],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        verticalDirection: VerticalDirection.down,
-                        children: <Widget>[
-                          Icon(
-                            Icons.home,
-                            size: 25,
-                            color: Helper.hexColor('#e67e22'),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'Govermental Affairs',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 13),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Text(
-                            '1,00,000',
-                            style: TextStyle(fontSize: 13),
-                          ),
-                        ],
-                      ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0, top: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              width: 60,
+                              height: 15,
+                              child: Text(
+                                'Name',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Helper.hexColor('#2C3D6D'),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              ': Ralph Noel Bruno',
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              width: 60,
+                              height: 15,
+                              child: Text(
+                                'Mobile',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Helper.hexColor('#2C3D6D'),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              child: Text(
+                                ': 9994594163',
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Container(
+                              width: 60,
+                              height: 15,
+                              child: Text(
+                                'Address',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: Helper.hexColor('#2C3D6D'),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Container(
+                              child: Text(
+                                ': Salem',
+                                style: TextStyle(
+                                  fontSize: 15,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -457,97 +474,7 @@ class InvestmentWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 1.00,
-            left: MediaQuery.of(context).size.width * 0.02,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  height: 100,
-                  width: 170,
-                  child: Card(
-                    elevation: 10,
-                    color: Colors.grey[50],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        verticalDirection: VerticalDirection.down,
-                        children: <Widget>[
-                          Icon(
-                            Icons.account_balance,
-                            size: 25,
-                            color: Helper.hexColor('#27ae60'),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'Govermental Affairs',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 13),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Text(
-                            '1,00,000',
-                            style: TextStyle(fontSize: 13),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Container(
-                  height: 100,
-                  width: 170,
-                  child: Card(
-                    elevation: 10,
-                    color: Colors.grey[50],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, top: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        verticalDirection: VerticalDirection.down,
-                        children: <Widget>[
-                          Icon(
-                            Icons.home,
-                            size: 25,
-                            color: Helper.hexColor('#e67e22'),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            'Govermental Affairs',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Text(
-                            '1,00,000',
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 1.19,
+            top: MediaQuery.of(context).size.height * 1.22,
             left: 10,
             child: Text(
               'News & Announcement',
@@ -569,6 +496,6 @@ class News1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-        top: MediaQuery.of(context).size.height * 1.24, child: new ListView2());
+        top: MediaQuery.of(context).size.height * 1.27, child: new ListView2());
   }
 }

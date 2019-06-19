@@ -39,6 +39,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   var investmentController = TextEditingController();
   var referralController = TextEditingController();
   DateTime _date = new DateTime.now();
+  TimeOfDay _time = new TimeOfDay.now();  
   selectedDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,
@@ -49,8 +50,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
     if (picked != null && picked != _date) {
       setState(() {
         _date = picked;
-        dateController.text =
+         dateController.text =
             "${_date.day.toString()}-${_date.month.toString().padLeft(2, '0')}-${_date.year.toString().padLeft(2, '0')}";
+
       });
     }
   }
@@ -133,66 +135,131 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+      dateController.text =
+        "${_date.day.toString()}-${_date.month.toString().padLeft(2, '0')}-${_date.year.toString().padLeft(2, '0')}";
     loadData();
     return Container(
       color: Helper.hexColor('#ebf6fc'),
       child: SingleChildScrollView(
-        child: Stack(
-          alignment: Alignment.bottomCenter,
+        child: Column(
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 55.0, left: 15),
-                    child: ShowUp(
-                      delay: 3,
-                      child: Text(
-                        'Topup',
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Helper.hexColor('#4ca7d4'),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: 250,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: ExactAssetImage(
-                          'assets/Images/crowd.png',
-                        ),
-                      ),
-                    ),
-                  ),
-                  Form(
-                    key: formKey,
-                    autovalidate: _autoValidate,
-                    child: Container(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height * 0.80,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.only(left: 16.0, right: 16.0, top: 15.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(
-                              height: 25,
+            Stack(
+              alignment: Alignment.bottomCenter,
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    //   crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(top: 18.0),
+                            child: Container(
+                              height: 240,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: ExactAssetImage(
+                                      'assets/Images/crowd.png',
+                                      scale: 2.8),
+                                  // fit: BoxFit.cover
+                                ),
+                              ),
+                              child: ShowUp(
+                                child: Column(
+                                  children: <Widget>[
+                                    Row(
+                                      children: <Widget>[
+                                        IconButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pushNamed(
+                                                "/registratioDashboard");
+                                          },
+                                          icon: Icon(
+                                            Icons.arrow_back_ios,
+                                            color: Helper.hexColor('#4ca7d4'),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: 92,
+                                        ),
+                                        Text(
+                                          'TopUp',
+                                          style: TextStyle(
+                                            color: Helper.hexColor('#4ca7d4'),
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                selectedDate(context);
-                              },
-                              child: AbsorbPointer(
-                                child: TextFormField(
-                                  validator: validateDate,
-                                  controller: dateController,
+                          ),
+                        ],
+                      ),
+                      Form(
+                        key: formKey,
+                        autovalidate: _autoValidate,
+                        child: Container(
+                          width: double.infinity,
+                          height: MediaQuery.of(context).size.height * 0.80,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                                left: 16.0, right: 16.0, top: 15.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                SizedBox(
+                                  height: 25,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    selectedDate(context);
+                                  },
+                                  child: AbsorbPointer(
+                                    child: TextFormField(
+                                      validator: validateDate,
+                                      controller: dateController,
+                                      textInputAction: TextInputAction.next,
+                                      decoration: InputDecoration(
+                                        focusedBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Helper.hexColor('#4ca7d4'),
+                                          ),
+                                        ),
+                                        enabledBorder: UnderlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Helper.hexColor('#4ca7d4'),
+                                          ),
+                                        ),
+                                        hintText: 'Date',
+                                        hintStyle: TextStyle(
+                                            color: Colors.grey, fontSize: 13.0),
+                                      ),
+                                      keyboardType: null,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                TextFormField(
+                                  validator: validateCustomerID,
+                                  focusNode: _nodeText1,
+                                  buildCounter: (BuildContext context,
+                                          {int currentLength,
+                                          int maxLength,
+                                          bool isFocused}) =>
+                                      null,
+                                  maxLength: 10,
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    WhitelistingTextInputFormatter.digitsOnly
+                                  ],
                                   textInputAction: TextInputAction.next,
                                   decoration: InputDecoration(
                                     focusedBorder: UnderlineInputBorder(
@@ -205,171 +272,108 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                         color: Helper.hexColor('#4ca7d4'),
                                       ),
                                     ),
-                                    hintText: 'Date',
+                                    hintText: 'Customer Id',
                                     hintStyle: TextStyle(
                                         color: Colors.grey, fontSize: 13.0),
                                   ),
-                                  keyboardType: null,
                                 ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            TextFormField(
-                              validator: validateCustomerID,
-                              focusNode: _nodeText1,
-                              buildCounter: (BuildContext context,
-                                      {int currentLength,
-                                      int maxLength,
-                                      bool isFocused}) =>
-                                  null,
-                              maxLength: 10,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                WhitelistingTextInputFormatter.digitsOnly
-                              ],
-                              textInputAction: TextInputAction.next,
-                              decoration: InputDecoration(
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
+                                SizedBox(height: 10),
+                                TextFormField(
+                                  validator: validateInvestment,
+                                  focusNode: _nodeText2,
+                                  controller: investmentController,
+                                  textInputAction: TextInputAction.next,
+                                  buildCounter: (BuildContext context,
+                                          {int currentLength,
+                                          int maxLength,
+                                          bool isFocused}) =>
+                                      null,
+                                  maxLength: 10,
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    WhitelistingTextInputFormatter.digitsOnly
+                                  ],
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    hintText: 'Investment Amount',
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey, fontSize: 13.0),
                                   ),
                                 ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
+                                SizedBox(
+                                  height: 15,
+                                ),
+                                TextFormField(
+                                  validator: validateName,
+                                  focusNode: _nodeText3,
+                                  buildCounter: (BuildContext context,
+                                          {int currentLength,
+                                          int maxLength,
+                                          bool isFocused}) =>
+                                      null,
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    hintText: 'Referral Name',
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey, fontSize: 13.0),
                                   ),
                                 ),
-                                hintText: 'Customer Id',
-                                hintStyle: TextStyle(
-                                    color: Colors.grey, fontSize: 13.0),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextFormField(
-                              validator: validateInvestment,
-                              focusNode: _nodeText2,
-                              controller: investmentController,
-                              textInputAction: TextInputAction.next,
-                              buildCounter: (BuildContext context,
-                                      {int currentLength,
-                                      int maxLength,
-                                      bool isFocused}) =>
-                                  null,
-                              maxLength: 10,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                WhitelistingTextInputFormatter.digitsOnly
-                              ],
-                              decoration: InputDecoration(
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
+                                SizedBox(height: 10),
+                                TextFormField(
+                                  validator: validateMobile,
+                                  focusNode: _nodeText4,
+                                  buildCounter: (BuildContext context,
+                                          {int currentLength,
+                                          int maxLength,
+                                          bool isFocused}) =>
+                                      null,
+                                  maxLength: 10,
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    WhitelistingTextInputFormatter.digitsOnly
+                                  ],
+                                  textInputAction: TextInputAction.next,
+                                  decoration: InputDecoration(
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    hintText: 'Referral Mobile',
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey, fontSize: 13.0),
                                   ),
                                 ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
-                                  ),
-                                ),
-                                hintText: 'Investment Amount',
-                                hintStyle: TextStyle(
-                                    color: Colors.grey, fontSize: 13.0),
-                              ),
-                            ),
-                            SizedBox(
-                              height: 15,
-                            ),
-                            TextFormField(
-                              validator: validateName,
-                              focusNode: _nodeText3,
-                              buildCounter: (BuildContext context,
-                                      {int currentLength,
-                                      int maxLength,
-                                      bool isFocused}) =>
-                                  null,
-                              textInputAction: TextInputAction.next,
-                              decoration: InputDecoration(
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
-                                  ),
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
-                                  ),
-                                ),
-                                hintText: 'Referral Name',
-                                hintStyle: TextStyle(
-                                    color: Colors.grey, fontSize: 13.0),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextFormField(
-                              validator: validateMobile,
-                              focusNode: _nodeText4,
-                              buildCounter: (BuildContext context,
-                                      {int currentLength,
-                                      int maxLength,
-                                      bool isFocused}) =>
-                                  null,
-                              maxLength: 10,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: [
-                                WhitelistingTextInputFormatter.digitsOnly
-                              ],
-                              textInputAction: TextInputAction.next,
-                              decoration: InputDecoration(
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
-                                  ),
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
-                                  ),
-                                ),
-                                hintText: 'Referral Mobile',
-                                hintStyle: TextStyle(
-                                    color: Colors.grey, fontSize: 13.0),
-                              ),
-                            ),
-                            SizedBox(height: 10),
-                            TextField(
-                              controller: referralController,
-                              onTap: () {
-                                FocusScope.of(context)
-                                    .requestFocus(new FocusNode());
-                                showSearch<String>(
-                                        context: context,
-                                        delegate: DataSearch())
-                                    .then(
-                                  (data) {
-                                    setState(
-                                      () {
-                                        referralController.text = data;
-                                      },
-                                    );
-                                  },
-                                );
-                              },
-                              buildCounter: (BuildContext context,
-                                      {int currentLength,
-                                      int maxLength,
-                                      bool isFocused}) =>
-                                  null,
-                              maxLength: 10,
-                              keyboardType: null,
-                              decoration: InputDecoration(
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.grey,
-                                  ),
-                                  onPressed: () {
+                                SizedBox(height: 10),
+                                TextField(
+                                  controller: referralController,
+                                  onTap: () {
+                                    FocusScope.of(context)
+                                        .requestFocus(new FocusNode());
                                     showSearch<String>(
                                             context: context,
                                             delegate: DataSearch())
@@ -383,58 +387,87 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                       },
                                     );
                                   },
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
+                                  buildCounter: (BuildContext context,
+                                          {int currentLength,
+                                          int maxLength,
+                                          bool isFocused}) =>
+                                      null,
+                                  maxLength: 10,
+                                  keyboardType: null,
+                                  decoration: InputDecoration(
+                                    suffixIcon: IconButton(
+                                      icon: Icon(
+                                        Icons.arrow_drop_down,
+                                        color: Colors.grey,
+                                      ),
+                                      onPressed: () {
+                                        showSearch<String>(
+                                                context: context,
+                                                delegate: DataSearch())
+                                            .then(
+                                          (data) {
+                                            setState(
+                                              () {
+                                                referralController.text = data;
+                                              },
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    focusedBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Helper.hexColor('#4ca7d4'),
+                                      ),
+                                    ),
+                                    hintText: 'Referral ID ',
+                                    hintStyle: TextStyle(
+                                        color: Colors.grey, fontSize: 13.0),
                                   ),
                                 ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Helper.hexColor('#4ca7d4'),
-                                  ),
-                                ),
-                                hintText: 'Referral ID ',
-                                hintStyle: TextStyle(
-                                    color: Colors.grey, fontSize: 13.0),
-                              ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-            ),
-            Container(
-              margin: statusClick == 0
-                  ? EdgeInsets.symmetric(horizontal: 15)
-                  : null,
-              child: statusClick == 0
-                  ? SizedBox(
-                      width: double.infinity,
-                      child: RaisedButton(
-                        elevation: 6.0,
-                        color: Helper.hexColor('#4ca7d4'),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0)),
-                        child: Text(
-                          'Register',
-                        ),
-                        textColor: Colors.white,
-                        onPressed: () {
-                          setState(
-                            () {
-                              validateInputs();
+                ),
+                Container(
+                  margin: statusClick == 0
+                      ? EdgeInsets.symmetric(horizontal: 15)
+                      : null,
+                  child: statusClick == 0
+                      ? SizedBox(
+                          width: double.infinity,
+                          child: RaisedButton(
+                            elevation: 6.0,
+                            color: Helper.hexColor('#4ca7d4'),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0)),
+                            child: Text(
+                              'Register',
+                            ),
+                            textColor: Colors.white,
+                            onPressed: () {
+                              setState(
+                                () {
+                                  validateInputs();
+                                },
+                              );
                             },
-                          );
-                        },
-                      ),
-                    )
-                  : new TopupStartAnimation(
-                      buttonController: animationControllerButton.view,
-                    ),
+                          ),
+                        )
+                      : new TopupStartAnimation(
+                          buttonController: animationControllerButton.view,
+                        ),
+                ),
+              ],
             ),
           ],
         ),

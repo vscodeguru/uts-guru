@@ -1,3 +1,4 @@
+import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class ListView2 extends StatelessWidget {
@@ -18,12 +19,27 @@ class ListView2 extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(right: 68.0),
-                      child: Text(
-                        'Wallet WithDraw',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Wallet WithDraw',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '17-06-2019',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     new Padding(
@@ -73,13 +89,10 @@ class ListView2 extends StatelessWidget {
                       width: 30.0,
                       decoration: new BoxDecoration(
                         shape: BoxShape.circle,
-
                         image: new DecorationImage(
                           image: new ExactAssetImage('assets/Images/wallet.png',
                               scale: 8.0),
-                          // fit: BoxFit.cover,
                         ),
-                        // color: Colors.pinkAccent,
                       ),
                     ),
                   ),
@@ -92,12 +105,27 @@ class ListView2 extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(right: 68.0),
-                      child: Text(
-                        'Wallet Transfer',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Wallet Transfer',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '17-06-2019',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     new Padding(
@@ -107,7 +135,6 @@ class ListView2 extends StatelessWidget {
                         child: new Container(
                           width: double.infinity,
                           height: 100.0,
-                          // color: Colors.green,
                           child: Padding(
                             padding: const EdgeInsets.only(
                                 left: 8.0, top: 15.0, right: 8.0),
@@ -162,13 +189,28 @@ class ListView2 extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(right: 68.0),
-                      child: Text(
-                        'Payout Issue',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                      padding: const EdgeInsets.only(right: 88.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Payout Issue',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '17-06-2019',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     new Padding(
@@ -178,7 +220,6 @@ class ListView2 extends StatelessWidget {
                         child: new Container(
                           width: double.infinity,
                           height: 100.0,
-                          // color: Colors.green,
                           child: Padding(
                             padding: const EdgeInsets.only(
                                 left: 8.0, top: 15.0, right: 8.0),
@@ -233,13 +274,28 @@ class ListView2 extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(right: 68.0),
-                      child: Text(
-                        'Registration',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
+                      padding: const EdgeInsets.only(right: 88.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Registration',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            '17-06-2019',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     new Padding(
