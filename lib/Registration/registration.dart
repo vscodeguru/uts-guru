@@ -219,7 +219,6 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                   decoration: InputDecoration(
                                     hintText: 'Enter your Name',
                                     hintStyle: TextStyle(
-                                        //  color: Helper.hexColor('#e6ecef'),
                                         fontSize: 13.0),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
