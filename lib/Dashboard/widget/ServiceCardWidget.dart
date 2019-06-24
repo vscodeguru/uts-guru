@@ -8,7 +8,7 @@ class ServiceCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        GestureDetector(
+          GestureDetector(
           onTap: () {
            Navigator.of(context).pushNamed("/error");
           },
