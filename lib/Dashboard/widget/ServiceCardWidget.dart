@@ -20,6 +20,12 @@ class ServiceCardWidget extends StatelessWidget {
           },
           child: buildContainer('assets/Images/card/trading.png'),
         ),
+          GestureDetector(
+          onTap: () {
+           Navigator.of(context).pushNamed("/error");
+          },
+          child: buildContainer('assets/Images/ecommerce/online.png'),
+        ),
       ],
     );
   }

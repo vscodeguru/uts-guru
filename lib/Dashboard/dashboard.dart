@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'package:UTS/Dashboard/widget/EcommerceWidget.dart';
 import 'package:UTS/Dashboard/widget/RechargeBookingWidget.dart';
 import 'package:UTS/Dashboard/widget/ProductWidget.dart';
 import 'package:UTS/Dashboard/widget/ServiceCardWidget.dart';
@@ -60,10 +59,6 @@ class _DashboardState extends State<Dashboard> {
               ProductWidget(),
               sectionHeader('Services'),
               ServiceCardWidget(),
-              Container(
-                height: 200,
-                child: Ecommerce(),
-              )
             ],
           ),
         ),
