@@ -21,18 +21,22 @@ class VerticalDashedSeparator extends StatelessWidget {
         final boxHeight = constraints.constrainHeight();
         final dashCount = (boxHeight / (1 * dashHeight)).floor();
         return Flex(
-          children: List.generate(dashCount, (_) {
-            return SizedBox(
-              width: dashWidth,
-              height: dashHeight,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                    color: (_ % 2 == ((this.startWithBackgroundColor) ? 0 : 1))
-                        ? color
-                        : backgroundColor),
-              ),
-            );
-          }),
+          children: List.generate(
+            dashCount,
+            (_) {
+              return SizedBox(
+                width: dashWidth,
+                height: dashHeight,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                      color:
+                          (_ % 2 == ((this.startWithBackgroundColor) ? 0 : 2))
+                              ? color
+                              : backgroundColor),
+                ),
+              );
+            },
+          ),
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           direction: Axis.vertical,
         );

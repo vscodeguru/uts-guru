@@ -29,13 +29,6 @@ class _DashboardState extends State<Dashboard> {
           AssetImage('assets/Images/slider/hotel1.jpg'),
           AssetImage('assets/Images/slider/e-shopping.jpg'),
           AssetImage('assets/Images/slider/movie.jpg'),
-          AssetImage('assets/Images/slider/flight1.jpg'),
-          AssetImage('assets/Images/slider/flight3.jpg',),
-          AssetImage('assets/Images/slider/flight4.jpg'),
-          AssetImage('assets/Images/slider/hotel3.jpg'),
-          AssetImage('assets/Images/slider/hotel4.jpg'),
-          AssetImage('assets/Images/slider/hotel5.jpg'),
-          AssetImage('assets/Images/slider/flight5.jpg'),
         ],
         autoplay: false,
         dotSize: 4.0,
@@ -52,8 +45,10 @@ class _DashboardState extends State<Dashboard> {
             'assets/Images/logo/uts.png',
             scale: 1.6,
           ),
-          title: Text('Universal Trading Solutions',
-              style: TextStyle(fontSize: 15)),
+          title: Text(
+            'Universal Trading Solutions',
+            style: TextStyle(fontSize: 15),
+          ),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.notifications),
