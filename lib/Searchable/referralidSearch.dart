@@ -67,7 +67,7 @@ class DataSearch extends SearchDelegate<String> {
             Center(
               child: Image.asset(
                 'assets/Images/talent.jpg',
-                height: 350,
+                height: 350 ,
               ),
             ),
             SizedBox(

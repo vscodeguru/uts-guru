@@ -20,6 +20,7 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     Widget imageCarousel = new Container(
       height: 200.0,
+      width: double.infinity,
       child: new Carousel(
         overlayShadowSize: 1,
         boxFit: BoxFit.fitWidth,
@@ -29,7 +30,7 @@ class _DashboardState extends State<Dashboard> {
           AssetImage('assets/Images/slider/e-shopping.jpg'),
           AssetImage('assets/Images/slider/movie.jpg'),
           AssetImage('assets/Images/slider/flight1.jpg'),
-          AssetImage('assets/Images/slider/flight3.jpg'),
+          AssetImage('assets/Images/slider/flight3.jpg',),
           AssetImage('assets/Images/slider/flight4.jpg'),
           AssetImage('assets/Images/slider/hotel3.jpg'),
           AssetImage('assets/Images/slider/hotel4.jpg'),
@@ -99,7 +100,8 @@ class _DashboardState extends State<Dashboard> {
     if (currentBackPressTime == null ||
         now.difference(currentBackPressTime) > Duration(seconds: 2)) {
       currentBackPressTime = now;
-      Toast.show('Press again to exit the app', context,duration: 2,backgroundColor: Helper.hexColor('#79afbb'));
+      Toast.show('Press back again to exit the app', context,
+          duration: 2, backgroundColor: Helper.hexColor('#79afbb'));
       return Future.value(false);
     }
     return SystemChannels.platform.invokeMethod('SystemNavigator.pop');
