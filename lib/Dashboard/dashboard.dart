@@ -22,15 +22,27 @@ class _DashboardState extends State<Dashboard> {
       height: 200.0,
       width: double.infinity,
       child: new Carousel(
+        showIndicator: true,
         overlayShadowSize: 1,
         boxFit: BoxFit.fitWidth,
         images: [
           AssetImage('assets/Images/slider/flight.jpg'),
           AssetImage('assets/Images/slider/hotel1.jpg'),
           AssetImage('assets/Images/slider/e-shopping.jpg'),
-          AssetImage('assets/Images/slider/movie.jpg'),
+          AssetImage('assets/Images/slider/Movie.jpg'),
+          
+          
+          
+          // AssetImage('assets/Images/slider/flight1.jpg'),
+          // AssetImage('assets/Images/slider/flight3.jpg'),
+          // AssetImage('assets/Images/slider/flight4.jpg'),
+          // AssetImage('assets/Images/slider/hotel3.jpg'),
+          // AssetImage('assets/Images/slider/hotel4.jpg'),
+          // AssetImage('assets/Images/slider/hotel5.jpg'),
+          // AssetImage('assets/Images/slider/flight5.jpg'),
+          // AssetImage('assets/Images/slider/flight7.jpg')
         ],
-        autoplay: false,
+        autoplay: true,
         dotSize: 4.0,
         indicatorBgPadding: 2.0,
       ),
