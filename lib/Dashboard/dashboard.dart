@@ -4,6 +4,8 @@ import 'package:UTS/Dashboard/widget/RechargeBookingWidget.dart';
 import 'package:UTS/Dashboard/widget/ProductWidget.dart';
 import 'package:UTS/Dashboard/widget/ServiceCardWidget.dart';
 import 'package:UTS/utils/helper.dart';
+import 'package:flutter/services.dart';
+import 'package:toast/toast.dart';
 
 class Dashboard extends StatefulWidget {
   Dashboard({Key key}) : super(key: key);
@@ -12,6 +14,8 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  DateTime currentBackPressTime;
+
   @override
   Widget build(BuildContext context) {
     Widget imageCarousel = new Container(
@@ -37,36 +41,39 @@ class _DashboardState extends State<Dashboard> {
         indicatorBgPadding: 2.0,
       ),
     );
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Helper.hexColor('#79afbb'),
-        centerTitle: true,
-        leading: Image.asset(
-          'assets/Images/logo/uts.png',
-          scale: 1.6,
-        ),
-        title:
-            Text('Universal Trading Solutions', style: TextStyle(fontSize: 15)),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.notifications),
-            onPressed: () {},
+    return WillPopScope(
+      onWillPop: onBackPressed,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Helper.hexColor('#79afbb'),
+          centerTitle: true,
+          leading: Image.asset(
+            'assets/Images/logo/uts.png',
+            scale: 1.6,
           ),
-        ],
-        elevation: 10.0,
-      ),
-      body: Container(
-        child: new SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              imageCarousel,
-              sectionHeader('Recharge & Booking'),
-              RechargeBookingWidget(),
-              sectionHeader('Product'),
-              ProductWidget(),
-              sectionHeader('Services'),
-              ServiceCardWidget(),
-            ],
+          title: Text('Universal Trading Solutions',
+              style: TextStyle(fontSize: 15)),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.notifications),
+              onPressed: () {},
+            ),
+          ],
+          elevation: 10.0,
+        ),
+        body: Container(
+          child: new SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                imageCarousel,
+                sectionHeader('Recharge & Booking'),
+                RechargeBookingWidget(),
+                sectionHeader('Product'),
+                ProductWidget(),
+                sectionHeader('Services'),
+                ServiceCardWidget(),
+              ],
+            ),
           ),
         ),
       ),
@@ -85,5 +92,16 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
     );
+  }
+
+  Future<bool> onBackPressed() {
+    DateTime now = DateTime.now();
+    if (currentBackPressTime == null ||
+        now.difference(currentBackPressTime) > Duration(seconds: 2)) {
+      currentBackPressTime = now;
+      Toast.show('Press again to exit the app', context,duration: 2,backgroundColor: Helper.hexColor('#79afbb'));
+      return Future.value(false);
+    }
+    return SystemChannels.platform.invokeMethod('SystemNavigator.pop');
   }
 }

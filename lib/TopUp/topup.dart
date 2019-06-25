@@ -173,8 +173,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                       children: <Widget>[
                                         IconButton(
                                           onPressed: () {
-                                            Navigator.of(context).pushNamed(
-                                                "/registratioDashboard");
+                                               Navigator.pop(context);
                                           },
                                           icon: Icon(
                                             Icons.arrow_back_ios,

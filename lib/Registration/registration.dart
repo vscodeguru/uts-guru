@@ -160,8 +160,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                       children: <Widget>[
                                         IconButton(
                                           onPressed: () {
-                                            Navigator.of(context).pushNamed(
-                                                "/registratioDashboard");
+                                            Navigator.pop(context);
                                           },
                                           icon: Icon(
                                             Icons.arrow_back_ios,
@@ -206,7 +205,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                   height: 25,
                                 ),
                                 TextFormField(
-                                    validator: validateName,
+                                  validator: validateName,
                                   controller: nameController,
                                   focusNode: _nodeText1,
                                   buildCounter: (BuildContext context,
@@ -218,8 +217,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                   textInputAction: TextInputAction.next,
                                   decoration: InputDecoration(
                                     hintText: 'Enter your Name',
-                                    hintStyle: TextStyle(
-                                        fontSize: 13.0),
+                                    hintStyle: TextStyle(fontSize: 13.0),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Helper.hexColor('#4ca7d4'),
