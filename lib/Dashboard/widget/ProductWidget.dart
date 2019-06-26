@@ -22,7 +22,7 @@ class ProductWidget extends StatelessWidget {
             child: new Productcard(
               height: _height,
               width: _width,
-              assetpath: 'assets/Images/bank1.jpg',
+              assetpath: 'assets/Images/product/bank1.jpg',
               text: 'Universal Trading Solution',
             ),
           ),
@@ -36,7 +36,7 @@ class ProductWidget extends StatelessWidget {
             child: new Productcard(
               height: _height,
               width: _width,
-              assetpath: 'assets/Images/chit1.jpg',
+              assetpath: 'assets/Images/product/chit1.jpg',
               text: 'Universal Chit Funds',
             ),
           ),

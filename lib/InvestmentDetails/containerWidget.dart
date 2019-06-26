@@ -10,7 +10,7 @@ class InvestmentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 2.39,
+      height: MediaQuery.of(context).size.height * 2.45,
       child: Stack(
         children: <Widget>[
           Container(
@@ -50,7 +50,7 @@ class InvestmentWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
-                              'assets/Images/agreement.png',
+                              'assets/Images/investmentcard/agreement.png',
                               scale: 8,
                             ),
                             SizedBox(
@@ -83,7 +83,7 @@ class InvestmentWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
-                              'assets/Images/wallet (1).png',
+                              'assets/Images/investmentcard/wallet (1).png',
                               scale: 8,
                             ),
                             SizedBox(
@@ -112,7 +112,7 @@ class InvestmentWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
-                            'assets/Images/wallet.png',
+                            'assets/Images/investmentcard/wallet.png',
                             scale: 8,
                           ),
                           SizedBox(
@@ -140,7 +140,7 @@ class InvestmentWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
-                            'assets/Images/cash-back.png',
+                            'assets/Images/investmentcard/cash-back.png',
                             scale: 8,
                           ),
                           SizedBox(
@@ -168,7 +168,7 @@ class InvestmentWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
-                            'assets/Images/group.png',
+                            'assets/Images/investmentcard/group.png',
                             scale: 8,
                           ),
                           SizedBox(
@@ -196,7 +196,7 @@ class InvestmentWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Image.asset(
-                            'assets/Images/complaint.png',
+                            'assets/Images/investmentcard/complaint.png',
                             scale: 8,
                           ),
                           SizedBox(
@@ -496,6 +496,6 @@ class News1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-        top: MediaQuery.of(context).size.height * 1.27, child: new ListView2());
+        top: MediaQuery.of(context).size.height * 1.24  , child: new ListView2());
   }
 }
