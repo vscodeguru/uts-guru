@@ -141,7 +141,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                       Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.only(top: 18.0),
+                            padding: const EdgeInsets.only(top: 38.0),
                             child: Container(
                               height: 240,
                               width: double.infinity,

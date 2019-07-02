@@ -1,6 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'containerWidget.dart';
 
 class UserProfile extends StatefulWidget {
@@ -24,7 +24,6 @@ class _UserProfileState extends State<UserProfile> {
     );
   }
 }
-
 
 class InvestmentWidgetDefinition extends StatelessWidget {
   const InvestmentWidgetDefinition({

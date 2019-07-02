@@ -20,11 +20,13 @@ dependencies:
   flutter:
     sdk: flutter
   carousel_pro: ^0.0.13
-  font_awesome_flutter: ^8.4.0
   flutter_svg: ^0.12.4
   keyboard_actions: ^2.0.1
   toast: ^0.1.3
-
+  http: ^0.12.0+2
+  dio: ^1.0.14
+  rxdart: ^0.20.0
+  
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Helper  {
+class Helper {
   static BoxShadow buildBoxShadow({
     String color = '#d8d8d8',
     double blurRadius = 10.0,
@@ -18,7 +18,8 @@ class Helper  {
       ),
     );
   }
-   static Color hexColor(final String hexColor) => _HexColor(hexColor);
+
+  static Color hexColor(final String hexColor) => _HexColor(hexColor);
 }
 
 class _HexColor extends Color {

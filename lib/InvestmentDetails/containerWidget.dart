@@ -10,7 +10,7 @@ class InvestmentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 2.45,
+      height: MediaQuery.of(context).size.height * 2.37,
       child: Stack(
         children: <Widget>[
           Container(
@@ -227,7 +227,7 @@ class InvestmentWidget extends StatelessWidget {
             left: MediaQuery.of(context).size.width * 0.02,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
+              children: <Widget>[ 
                 Container(
                   height: 100,
                   width: 170,
@@ -496,6 +496,7 @@ class News1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-        top: MediaQuery.of(context).size.height * 1.24  , child: new ListView2());
+        top: MediaQuery.of(context).size.height * 1.24, child: new ListView2());
   }
 }
+

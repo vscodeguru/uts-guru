@@ -96,9 +96,9 @@ class _DashboardState extends State<Dashboard> {
         now.difference(currentBackPressTime) > Duration(seconds: 2)) {
       currentBackPressTime = now;
       Toast.show('Press back again to exit the app', context,
-          duration: 2, backgroundColor: Helper.hexColor('#79afbb'));
+          duration: 2, backgroundColor: Colors.blueGrey[500]);
       return Future.value(false);
     }
-    return SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+   return SystemNavigator.pop();
   }
 }

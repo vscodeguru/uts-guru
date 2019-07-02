@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:flutter/rendering.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:UTS/Dashboard/widget/verticalSeperator.dart';
 import 'package:UTS/utils/helper.dart';
@@ -44,7 +43,7 @@ class RechargeBookingWidget extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).pushNamed("/error");
+                  Navigator.of(context).pushNamed("/login");
                 },
                 child: new TicketCardWidget(
                   margin: EdgeInsets.only(right: 10),
@@ -140,12 +139,13 @@ class TicketCardWidget extends StatelessWidget {
                 color: this.color,
               ),
               child: Center(
-                  child: SvgPicture.asset(
-                this.assetPath,
-                height: height - 20,
-                width: height - 20,
-                color: Colors.white,
-              )),
+                child: SvgPicture.asset(
+                  this.assetPath,
+                  height: height - 20,
+                  width: height - 20,
+                  color: Colors.white,
+                ),
+              ),
             ),
             VerticalDashedSeparator(
               backgroundColor: this.color,
@@ -195,12 +195,13 @@ class TicketCardWidget extends StatelessWidget {
                 ),
               ),
               child: Center(
-                  child: SvgPicture.asset(
-                this.assetPath,
-                height: height - 30,
-                width: height - 30,
-                color: Colors.white,
-              )),
+                child: SvgPicture.asset(
+                  this.assetPath,
+                  height: height - 30,
+                  width: height - 30,
+                  color: Colors.white,
+                ),
+              ),
             ),
             VerticalDashedSeparator(
               backgroundColor: this.color,

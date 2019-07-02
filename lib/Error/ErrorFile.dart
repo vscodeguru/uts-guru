@@ -12,29 +12,26 @@ class _ErrorPageWidgetState extends State<ErrorPageWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Helper.hexColor('#B0C6F5'),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              height: 300,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/Images/error/construction.png'),
-                  fit: BoxFit.cover,
-                ),
+      body: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            height: 300,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/Images/error/construction.png'),
+                fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(13.0),
-              child: Text(
-                'Under Construction',
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-            )
-          ],
-        ),
+          ),
+          SizedBox(height: 20,),
+          Text(
+            'Under Construction',
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          )
+        ],
       ),
     );
   }
 }
+

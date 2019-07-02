@@ -8,23 +8,23 @@ class ServiceCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-          GestureDetector(
+        GestureDetector(
           onTap: () {
-           Navigator.of(context).pushNamed("/error");
+            Navigator.of(context).pushNamed("/error");
           },
           child: buildContainer('assets/Images/card/education.png'),
         ),
         GestureDetector(
           onTap: () {
-           Navigator.of(context).pushNamed("/error");
+            Navigator.of(context).pushNamed("/error");
           },
           child: buildContainer('assets/Images/card/trading.png'),
         ),
-          GestureDetector(
+        GestureDetector(
           onTap: () {
-           Navigator.of(context).pushNamed("/error");
+            Navigator.of(context).pushNamed("/error");
           },
-          child: buildContainer('assets/Images/ecommerce/online.png'),
+          child: buildContainer('assets/Images/slider/e-shopping.jpg'),
         ),
       ],
     );
@@ -34,11 +34,12 @@ class ServiceCardWidget extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(assetPath),
-            fit: BoxFit.cover,
-          ),
-          boxShadow: [Helper.buildBoxShadow()]),
+        image: DecorationImage(
+          image: AssetImage(assetPath),
+          fit: BoxFit.cover,
+        ),
+        boxShadow: [Helper.buildBoxShadow()],
+      ),
       height: 180,
     );
   }
