@@ -26,7 +26,7 @@ class _ErrorPageWidgetState extends State<ErrorPageWidget> {
           ),
           SizedBox(height: 20,),
           Text(
-            'Under Construction',
+             'Under Construction',
             style: TextStyle(color: Colors.white, fontSize: 20),
           )
         ],

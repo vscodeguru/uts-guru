@@ -3,8 +3,10 @@ import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class InvestmentWidget extends StatelessWidget {
+  final String newdata;
   const InvestmentWidget({
     Key key,
+    this.newdata,
   }) : super(key: key);
 
   @override
@@ -227,7 +229,7 @@ class InvestmentWidget extends StatelessWidget {
             left: MediaQuery.of(context).size.width * 0.02,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[ 
+              children: <Widget>[
                 Container(
                   height: 100,
                   width: 170,
@@ -404,7 +406,7 @@ class InvestmentWidget extends StatelessWidget {
                               width: 10,
                             ),
                             Text(
-                              ': Ralph Noel Bruno',
+                              ': $newdata',
                               style: TextStyle(fontSize: 15),
                             ),
                           ],
@@ -499,4 +501,3 @@ class News1 extends StatelessWidget {
         top: MediaQuery.of(context).size.height * 1.24, child: new ListView2());
   }
 }
-

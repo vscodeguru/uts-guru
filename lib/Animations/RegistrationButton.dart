@@ -3,15 +3,22 @@ import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class StartAnimation extends StatefulWidget {
+  String newdata;
+
   StartAnimation(
-      {Key key, this.buttonController, this.name, this.mobile, this.investment})
+      {Key key,
+      this.buttonController,
+      this.name,
+      this.mobile,
+      this.investment,
+      this.newdata})
       : shrinkAnimationButton = new Tween(begin: 320.0, end: 70.0).animate(
           CurvedAnimation(
             parent: buttonController,
             curve: Interval(0.0, 0.150),
           ),
         ),
-        ZoomAnimation = new Tween(begin: 10.0, end: 900.0).animate(
+        zoomAnimation = new Tween(begin: 10.0, end: 900.0).animate(
           CurvedAnimation(
               parent: buttonController,
               curve: Interval(0.550, 0.999, curve: Curves.bounceInOut)),
@@ -19,13 +26,13 @@ class StartAnimation extends StatefulWidget {
         super(key: key);
   final AnimationController buttonController;
   final Animation shrinkAnimationButton;
-  final Animation ZoomAnimation;
+  final Animation zoomAnimation;
   final String name;
   final String mobile;
   final String investment;
   Widget _buildAnimation(BuildContext context, Widget child) {
     return Center(
-      child: ZoomAnimation.value <= 340
+      child: zoomAnimation.value <= 340
           ? SizedBox(
               width: shrinkAnimationButton.value,
               // child:  Progress()
@@ -54,11 +61,11 @@ class StartAnimation extends StatefulWidget {
               ),
             )
           : Container(
-              width: ZoomAnimation.value,
-              height: ZoomAnimation.value,
+              width: zoomAnimation.value,
+              height: zoomAnimation.value,
               decoration: BoxDecoration(
                   color: Helper.hexColor('#4ca7d4'),
-                  shape: ZoomAnimation.value < 600
+                  shape: zoomAnimation.value < 600
                       ? BoxShape.circle
                       : BoxShape.rectangle),
               child: Icon(Icons.check_circle, size: 100),
@@ -74,10 +81,8 @@ class _StartAnimationState extends State<StartAnimation> {
   Widget build(BuildContext context) {
     widget.buttonController.addListener(
       () {
-        if (widget.ZoomAnimation.isCompleted) {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (BuildContext context) => TopupWidget()),
-          );
+        if (widget.zoomAnimation.isCompleted) {
+          Navigator.of(context).pop();
         }
       },
     );

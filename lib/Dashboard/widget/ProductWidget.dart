@@ -7,7 +7,6 @@ class ProductWidget extends StatelessWidget {
     return horizontalCard(context);
   }
 
-
   Widget horizontalCard(BuildContext context) {
     var _width = ((MediaQuery.of(context).size.width - 30) / 2);
     var _height = 170.0;
@@ -17,7 +16,7 @@ class ProductWidget extends StatelessWidget {
         children: <Widget>[
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushNamed("/registratioDashboard");
+              Navigator.of(context).pushNamed("/registrationDashboard");
             },
             child: new Productcard(
               height: _height,

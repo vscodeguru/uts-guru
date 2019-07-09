@@ -1,5 +1,6 @@
 import 'package:UTS/Animations/RegistrationButton.dart';
 import 'package:UTS/Animations/fabanimations.dart';
+import 'package:UTS/InvestmentDetails/dashboardprofile.dart';
 import 'package:UTS/Searchable/referralidSearch.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   final FocusNode _nodeText4 = FocusNode();
   final FocusNode _nodeText5 = FocusNode();
   var nameController = TextEditingController();
+  var genderController = TextEditingController();
   var dateController = TextEditingController();
   var mobileController = TextEditingController();
   var investmentController = TextEditingController();
@@ -43,27 +45,31 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
         context: context,
         initialDate: _date,
         firstDate: DateTime(1930),
-        lastDate: DateTime(2065));
+        lastDate: DateTime(2095));
 
     if (picked != null && picked != _date) {
-      setState(() {
-        _date = picked;
-        dateController.text =
-            "${_date.day.toString()}-${_date.month.toString().padLeft(2, '0')}-${_date.year.toString().padLeft(2, '0')}";
-      });
+      setState(
+        () {
+          _date = picked;
+          dateController.text =
+              "${_date.day.toString()}-${_date.month.toString().padLeft(2, '0')}-${_date.year.toString().padLeft(2, '0')}";
+        },
+      );
     }
   }
 
   List<DropdownMenuItem<String>> listDrop = [];
   List<String> drop = ['Male', 'Female'];
-  String selected = null;
+  String selected;
   void loadData() {
     listDrop = [];
     listDrop = drop
-        .map((val) => new DropdownMenuItem<String>(
-              child: Text(val),
-              value: val,
-            ))
+        .map(
+          (val) => new DropdownMenuItem<String>(
+                child: Text(val),
+                value: val,
+              ),
+        )
         .toList();
   }
 
@@ -96,13 +102,17 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
     FormKeyboardActions.setKeyboardActions(context, _buildConfig(context));
     animationControllerButton =
         AnimationController(duration: Duration(seconds: 3), vsync: this)
-          ..addStatusListener((status) {
-            if (status == AnimationStatus.dismissed) {
-              setState(() {
-                statusClick = 0;
-              });
-            }
-          });
+          ..addStatusListener(
+            (status) {
+              if (status == AnimationStatus.dismissed) {
+                setState(
+                  () {
+                    statusClick = 0;
+                  },
+                );
+              }
+            },
+          );
     super.initState();
   }
 
@@ -253,8 +263,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                   items: listDrop,
                                   value: selected,
                                   onChanged: (value) {
-                                    selected = value;
-                                    setState(() {});
+                                    setState(() {
+                                      selected = value;
+                                    });
                                   },
                                 ),
                                 SizedBox(
@@ -464,6 +475,14 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
     );
   }
 
+  void test() {
+    print('name:' + nameController.text);
+    print('gender:' + selected);
+    print('date:' + dateController.text);
+    print('investment:' + investmentController.text);
+    print('referal Id:' + referralController.text);
+  }
+
   String validateName(String value) {
     if (value.isEmpty)
       return 'Name is required';
@@ -488,6 +507,8 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   String validateGender(value) {
     if (value == null) {
       return 'Choose your gender';
+    } else {
+      return null;
     }
   }
 
@@ -503,9 +524,11 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   void validateInputs() {
     final form = formKey.currentState;
     if (formKey.currentState.validate()) {
+      test();
       statusClick = 1;
       playAnimation();
       formKey.currentState.reset();
+      form.save();
     } else {
       setState(() {
         _autoValidate = true;

@@ -10,16 +10,7 @@ class ReferralId extends StatefulWidget {
 class _ReferralIdState extends State<ReferralId> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(
-        //   actions: <Widget>[
-
-        //   ],
-        // ),
-        // body: Container(
-        //   color: Colors.black,
-        // ),
-        );
+    return Scaffold();
   }
 }
 
@@ -64,10 +55,13 @@ class DataSearch extends SearchDelegate<String> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Center(
-              child: Image.asset(
-                'assets/Images/talent.jpg',
-                height: 350 ,
+            Container(
+              height: 200,
+              child: Center(
+                child: Image.asset(
+                  'assets/Images/talent.jpg',
+                  height: 350,
+                ),
               ),
             ),
             SizedBox(
@@ -85,7 +79,10 @@ class DataSearch extends SearchDelegate<String> {
                 SizedBox(height: 10),
                 Text(
                   query,
-                  style: TextStyle(fontSize: 18,   color: Colors.grey[700],),
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey[700],
+                  ),
                 ),
               ],
             )
@@ -136,4 +133,3 @@ class DataSearch extends SearchDelegate<String> {
     );
   }
 }
-

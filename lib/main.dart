@@ -1,4 +1,5 @@
 import 'package:UTS/Error/ErrorFile.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:UTS/SplashScreen/splash.dart';
@@ -17,11 +18,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: <String, WidgetBuilder>{
+      initialRoute: '/first',
+      routes: {
+        '/first': (context) => SplashWidget(),
+        "/registrationDashboard": (BuildContext context) => UserProfile(),
         "/error": (BuildContext context) => ErrorPageWidget(),
         "/registration": (BuildContext context) => RegisterationWidget(),
         "/topup": (BuildContext context) => TopupWidget(),
-        "/registratioDashboard": (BuildContext context) => UserProfile(),
       },
       debugShowCheckedModeBanner: false,
       title: 'UTS',

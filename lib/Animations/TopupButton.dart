@@ -75,11 +75,9 @@ class _TopupStartAnimationState extends State<TopupStartAnimation> {
     widget.buttonController.addListener(
       () {
         if (widget.ZoomAnimation.isCompleted) {
-          Navigator.of(context).push(
-            MaterialPageRoute(builder: (BuildContext context) => UserProfile()),
-          );
+          Navigator.pop(context);
         }
-      },
+        },
     );
     return new AnimatedBuilder(
       builder: widget._buildAnimation,

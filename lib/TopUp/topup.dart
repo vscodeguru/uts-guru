@@ -31,7 +31,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   final FocusNode _nodeText2 = FocusNode();
   final FocusNode _nodeText3 = FocusNode();
   final FocusNode _nodeText4 = FocusNode();
-  final FocusNode _nodeText5 = FocusNode();
+  // final FocusNode _nodeText5 = FocusNode();
   String dropdownValue = 'Male';
   var nameController = TextEditingController();
   var dateController = TextEditingController();
@@ -39,7 +39,6 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   var investmentController = TextEditingController();
   var referralController = TextEditingController();
   DateTime _date = new DateTime.now();
-  TimeOfDay _time = new TimeOfDay.now();  
   selectedDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
         context: context,
@@ -50,16 +49,15 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
     if (picked != null && picked != _date) {
       setState(() {
         _date = picked;
-         dateController.text =
+        dateController.text =
             "${_date.day.toString()}-${_date.month.toString().padLeft(2, '0')}-${_date.year.toString().padLeft(2, '0')}";
-
       });
     }
   }
 
   List<DropdownMenuItem<String>> listDrop = [];
   List<String> drop = ['Male', 'Female'];
-  String selected = null;
+  String selected;
   void loadData() {
     listDrop = [];
     listDrop = drop
@@ -135,7 +133,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-      dateController.text =
+    dateController.text =
         "${_date.day.toString()}-${_date.month.toString().padLeft(2, '0')}-${_date.year.toString().padLeft(2, '0')}";
     loadData();
     return Container(
@@ -173,7 +171,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                       children: <Widget>[
                                         IconButton(
                                           onPressed: () {
-                                               Navigator.pop(context);
+                                            Navigator.pop(context);
                                           },
                                           icon: Icon(
                                             Icons.arrow_back_ios,
@@ -506,6 +504,8 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
     if (value == null) {
       return 'Choose your gender';
     }
+     else
+      return null;
   }
 
   String validateMobile(String value) {
@@ -522,6 +522,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
     if (formKey.currentState.validate()) {
       statusClick = 1;
       playAnimation();
+      form.save();
     } else {
       setState(() {
         _autoValidate = true;
