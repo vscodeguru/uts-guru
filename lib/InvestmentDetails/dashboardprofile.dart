@@ -12,7 +12,7 @@ class UserProfile extends StatefulWidget {
     Key key,
     this.nedata,
     this.newdata,
-    this.data,
+    this.data, value,
   }) : super(key: key);
 
   _UserProfileState createState() => _UserProfileState();

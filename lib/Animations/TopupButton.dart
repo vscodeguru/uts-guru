@@ -73,7 +73,7 @@ class _TopupStartAnimationState extends State<TopupStartAnimation> {
   @override
   Widget build(BuildContext context) {
     widget.buttonController.addListener(
-      () {
+         () {
         if (widget.ZoomAnimation.isCompleted) {
           Navigator.pop(context);
         }

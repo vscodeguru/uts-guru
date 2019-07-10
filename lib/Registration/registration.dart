@@ -98,6 +98,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   AnimationController animationControllerButton;
   @override
   void initState() {
+    nameController = new TextEditingController(text: '');
+    mobileController = new TextEditingController(text: '');
+    referralController = new TextEditingController(text: '');
     // Configure keyboard actions
     FormKeyboardActions.setKeyboardActions(context, _buildConfig(context));
     animationControllerButton =
@@ -524,9 +527,15 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   void validateInputs() {
     final form = formKey.currentState;
     if (formKey.currentState.validate()) {
-      test();
+       Navigator.of(context).push(
+            MaterialPageRoute(builder: (BuildContext context) => UserProfile(
+              nedata: nameController.text,
+              newdata: mobileController.text,
+              data: referralController.text,
+            )),
+          );
       statusClick = 1;
-      playAnimation();
+     // playAnimation();
       formKey.currentState.reset();
       form.save();
     } else {
