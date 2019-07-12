@@ -12,7 +12,8 @@ class UserProfile extends StatefulWidget {
     Key key,
     this.nedata,
     this.newdata,
-    this.data, value,
+    this.data,
+    value,
   }) : super(key: key);
 
   _UserProfileState createState() => _UserProfileState();
@@ -411,7 +412,7 @@ class _UserProfileState extends State<UserProfile> {
                           decoration: BoxDecoration(
                             boxShadow: [
                               Helper.buildBoxShadow(
-                                  blurRadius: 2.0,
+                                  blurRadius: 1.0,
                                   spreadRadius: 0.0,
                                   color: '#6f6f6f')
                             ],

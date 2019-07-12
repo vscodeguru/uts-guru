@@ -235,7 +235,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                         ),
                                         hintText: 'Date',
                                         hintStyle: TextStyle(
-                                            color: Colors.grey, fontSize: 13.0),
+                                            color: Colors.grey, fontSize: 11.0),
                                       ),
                                       keyboardType: null,
                                     ),
@@ -271,7 +271,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     ),
                                     hintText: 'Customer Id',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                   ),
                                 ),
                                 SizedBox(height: 10),
@@ -303,7 +303,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     ),
                                     hintText: 'Investment Amount',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                   ),
                                 ),
                                 SizedBox(
@@ -331,7 +331,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     ),
                                     hintText: 'Referral Name',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                   ),
                                 ),
                                 SizedBox(height: 10),
@@ -362,7 +362,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     ),
                                     hintText: 'Referral Mobile',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                   ),
                                 ),
                                 SizedBox(height: 10),
@@ -424,7 +424,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     ),
                                     hintText: 'Referral ID ',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                   ),
                                 ),
                               ],

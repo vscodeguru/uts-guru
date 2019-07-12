@@ -21,7 +21,8 @@ class DataSearch extends SearchDelegate<String> {
     'ON124cx',
     'ON1234we',
   ];
-  final recentid = ['ON1234we', 'ON1234we'];
+  final recentid = [];
+  final image = Image.asset('assets/Images/talent.jpg');
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
@@ -100,6 +101,7 @@ class DataSearch extends SearchDelegate<String> {
         : id
             .where((p) => p.toLowerCase().contains(query.toLowerCase()))
             .toList();
+
     return Column(
       children: <Widget>[
         Expanded(

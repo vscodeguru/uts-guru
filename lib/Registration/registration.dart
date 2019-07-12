@@ -1,11 +1,11 @@
 import 'package:UTS/Animations/RegistrationButton.dart';
 import 'package:UTS/Animations/fabanimations.dart';
-import 'package:UTS/InvestmentDetails/dashboardprofile.dart';
 import 'package:UTS/Searchable/referralidSearch.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
+import 'package:flutter_masked_text/flutter_masked_text.dart';
 
 //Full screen
 class RegisterationWidget extends StatelessWidget {
@@ -36,8 +36,10 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   var nameController = TextEditingController();
   var genderController = TextEditingController();
   var dateController = TextEditingController();
-  var mobileController = TextEditingController();
-  var investmentController = TextEditingController();
+  var mobileController = new MaskedTextController(mask: '00000-00000');
+  final investmentController = new MoneyMaskedTextController(
+      decimalSeparator: '.', thousandSeparator: ',');
+
   var referralController = TextEditingController();
   DateTime _date = new DateTime.now();
   selectedDate(BuildContext context) async {
@@ -98,9 +100,6 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   AnimationController animationControllerButton;
   @override
   void initState() {
-    nameController = new TextEditingController(text: '');
-    mobileController = new TextEditingController(text: '');
-    referralController = new TextEditingController(text: '');
     // Configure keyboard actions
     FormKeyboardActions.setKeyboardActions(context, _buildConfig(context));
     animationControllerButton =
@@ -230,7 +229,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                   textInputAction: TextInputAction.next,
                                   decoration: InputDecoration(
                                     hintText: 'Enter your Name',
-                                    hintStyle: TextStyle(fontSize: 13.0),
+                                    hintStyle: TextStyle(fontSize: 11.0),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Helper.hexColor('#4ca7d4'),
@@ -251,7 +250,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                   decoration: InputDecoration(
                                     hintText: 'Select your Gender',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Helper.hexColor('#4ca7d4'),
@@ -297,7 +296,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                         ),
                                         hintText: 'Date',
                                         hintStyle: TextStyle(
-                                            color: Colors.grey, fontSize: 13.0),
+                                            color: Colors.grey, fontSize: 11.0),
                                       ),
                                       keyboardType: null,
                                     ),
@@ -334,7 +333,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     ),
                                     hintText: 'Mobile Number',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                   ),
                                 ),
                                 SizedBox(height: 10),
@@ -366,7 +365,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     ),
                                     hintText: 'Investment',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                   ),
                                 ),
                                 SizedBox(
@@ -430,7 +429,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                     ),
                                     hintText: 'Referral ID ',
                                     hintStyle: TextStyle(
-                                        color: Colors.grey, fontSize: 13.0),
+                                        color: Colors.grey, fontSize: 11.0),
                                   ),
                                 ),
                               ],
@@ -518,7 +517,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   String validateMobile(String value) {
     if (value.length == 0) {
       return "Mobile is Required";
-    } else if (value.length != 10) {
+    } else if (value.length != 11) {
       return "Mobile number must 10 digits";
     }
     return null;
@@ -527,15 +526,10 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   void validateInputs() {
     final form = formKey.currentState;
     if (formKey.currentState.validate()) {
-       Navigator.of(context).push(
-            MaterialPageRoute(builder: (BuildContext context) => UserProfile(
-              nedata: nameController.text,
-              newdata: mobileController.text,
-              data: referralController.text,
-            )),
-          );
       statusClick = 1;
-     // playAnimation();
+      playAnimation();
+      nameController.clear();
+      mobileController.clear();
       formKey.currentState.reset();
       form.save();
     } else {
