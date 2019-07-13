@@ -1,5 +1,5 @@
 import 'package:UTS/Animations/RegistrationButton.dart';
-import 'package:UTS/Animations/fabanimations.dart';
+import 'package:UTS/Registration/topContainer.dart';
 import 'package:UTS/Searchable/referralidSearch.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:keyboard_actions/keyboard_actions.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 
-//Full screen
 class RegisterationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -44,11 +43,11 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
   DateTime _date = new DateTime.now();
   selectedDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: _date,
-        firstDate: DateTime(1930),
-        lastDate: DateTime(2095));
-
+      context: context,
+      initialDate: _date,
+      firstDate: DateTime(1930),
+      lastDate: DateTime(2095),
+    );
     if (picked != null && picked != _date) {
       setState(
         () {
@@ -150,55 +149,7 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(top: 38.0),
-                            child: Container(
-                              height: 240,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: ExactAssetImage(
-                                      'assets/Images/crowd.png',
-                                      scale: 2.8),
-                                  // fit: BoxFit.cover
-                                ),
-                              ),
-                              child: ShowUp(
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(
-                                      children: <Widget>[
-                                        IconButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          icon: Icon(
-                                            Icons.arrow_back_ios,
-                                            color: Helper.hexColor('#4ca7d4'),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 80,
-                                        ),
-                                        Text(
-                                          'Registration',
-                                          style: TextStyle(
-                                            color: Helper.hexColor('#4ca7d4'),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                      new Topcontainer(),
                       Form(
                         key: formKey,
                         autovalidate: _autoValidate,
@@ -374,12 +325,13 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                 TextField(
                                   controller: referralController,
                                   onTap: () {
-                                    FocusScope.of(context)
-                                        .requestFocus(new FocusNode());
+                                    FocusScope.of(context).requestFocus(
+                                      new FocusNode(),
+                                    );
                                     showSearch<String>(
-                                            context: context,
-                                            delegate: DataSearch())
-                                        .then(
+                                      context: context,
+                                      delegate: DataSearch(),
+                                    ).then(
                                       (data) {
                                         setState(
                                           () {
@@ -404,9 +356,9 @@ class _ContentState extends State<Content> with TickerProviderStateMixin {
                                       ),
                                       onPressed: () {
                                         showSearch<String>(
-                                                context: context,
-                                                delegate: DataSearch())
-                                            .then(
+                                          context: context,
+                                          delegate: DataSearch(),
+                                        ).then(
                                           (data) {
                                             setState(
                                               () {

@@ -444,7 +444,7 @@ class _UserProfileState extends State<UserProfile> {
                                       width: 10,
                                     ),
                                     Text(
-                                      ': ${widget.nedata}',
+                                      ': Ralph Noel Bruno',
                                       style: TextStyle(fontSize: 15),
                                     ),
                                   ],
@@ -471,7 +471,7 @@ class _UserProfileState extends State<UserProfile> {
                                     ),
                                     Container(
                                       child: Text(
-                                        ': ${widget.newdata}',
+                                        ': 9994594163',
                                       ),
                                     ),
                                   ],
@@ -508,33 +508,6 @@ class _UserProfileState extends State<UserProfile> {
                                 ),
                                 SizedBox(
                                   height: 15,
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Container(
-                                      width: 60,
-                                      height: 15,
-                                      child: Text(
-                                        'Referal',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold,
-                                          color: Helper.hexColor('#2C3D6D'),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Container(
-                                      child: Text(
-                                        ': ${widget.data}',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
                                 ),
                               ],
                             ),

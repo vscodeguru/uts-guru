@@ -1,17 +1,12 @@
+import 'package:UTS/InvestmentDetails/dashboardprofile.dart';
 import 'package:UTS/Utils/helper.dart';
 import 'package:flutter/material.dart';
 
 class StartAnimation extends StatefulWidget {
-  String newdata;
-
-  StartAnimation(
-      {Key key,
-      this.buttonController,
-      this.name,
-      this.mobile,
-      this.investment,
-      this.newdata})
-      : shrinkAnimationButton = new Tween(begin: 320.0, end: 70.0).animate(
+  StartAnimation({
+    Key key,
+    this.buttonController,
+  })  : shrinkAnimationButton = new Tween(begin: 320.0, end: 70.0).animate(
           CurvedAnimation(
             parent: buttonController,
             curve: Interval(0.0, 0.150),
@@ -26,15 +21,11 @@ class StartAnimation extends StatefulWidget {
   final AnimationController buttonController;
   final Animation shrinkAnimationButton;
   final Animation zoomAnimation;
-  final String name;
-  final String mobile;
-  final String investment;
   Widget _buildAnimation(BuildContext context, Widget child) {
     return Center(
       child: zoomAnimation.value <= 340
           ? SizedBox(
               width: shrinkAnimationButton.value,
-              // child:  Progress()
               child: RaisedButton(
                 onPressed: () {},
                 elevation: 6.0,
@@ -81,7 +72,7 @@ class _StartAnimationState extends State<StartAnimation> {
     widget.buttonController.addListener(
       () {
         if (widget.zoomAnimation.isCompleted) {
-          Navigator.of(context).pop();
+          Navigator.pop(context, UserProfile);
         }
       },
     );

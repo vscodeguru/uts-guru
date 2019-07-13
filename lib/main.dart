@@ -9,7 +9,9 @@ import 'Registration/registration.dart';
 import 'TopUP/topup.dart';
 
 void main() {
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
   runApp(MyApp());
 }
 
