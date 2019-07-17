@@ -8,7 +8,6 @@ import 'package:flutter/services.dart';
 import 'package:toast/toast.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-
 class Dashboard extends StatefulWidget {
   Dashboard({Key key}) : super(key: key);
 
@@ -18,6 +17,8 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   String _imageUrl = 'https://flutter.io/images/catalog-widget-placeholder.png';
+  final bigPictureStyleInformation =
+      BigPictureStyleInformation('crowd', BitmapSource.Drawable);
 
   @override
   void initState() {
@@ -41,8 +42,9 @@ class _DashboardState extends State<Dashboard> {
       priority: Priority.High,
       icon: 'uts',
       style: AndroidNotificationStyle.BigPicture,
+      styleInformation: bigPictureStyleInformation,
     );
-    var ios = new IOSNotificationDetails();
+    var ios = new IOSNotificationDetails(presentBadge: true);
     var platform = new NotificationDetails(android, ios);
     await flutterLocalNotificationsPlugin.show(
       0,
@@ -88,11 +90,10 @@ class _DashboardState extends State<Dashboard> {
           ),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.notifications),
-              onPressed: () {
-                showNotification();
-              },
-            ),
+                icon: Icon(Icons.notifications),
+                onPressed: () {
+                  showNotification();
+                }),
           ],
           elevation: 10.0,
         ),
