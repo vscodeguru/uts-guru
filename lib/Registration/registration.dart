@@ -13,6 +13,7 @@ class RegisterationWidget extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: FormKeyboardActions(
+        autoScroll: false,
         child: Content(),
       ),
     );

@@ -6,6 +6,8 @@ import 'package:UTS/Dashboard/widget/ServiceCardWidget.dart';
 import 'package:UTS/utils/helper.dart';
 import 'package:flutter/services.dart';
 import 'package:toast/toast.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
 
 class Dashboard extends StatefulWidget {
   Dashboard({Key key}) : super(key: key);
@@ -14,8 +16,43 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  DateTime currentBackPressTime;
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  String _imageUrl = 'https://flutter.io/images/catalog-widget-placeholder.png';
 
+  @override
+  void initState() {
+    super.initState();
+    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
+    var android = new AndroidInitializationSettings('app_icon');
+    var ios = new IOSInitializationSettings();
+    var initializationSettings = new InitializationSettings(android, ios);
+    flutterLocalNotificationsPlugin.initialize(initializationSettings,
+        onSelectNotification: onSelectNotification);
+  }
+
+  Future onSelectNotification(String payload) async {}
+
+  showNotification() async {
+    var android = new AndroidNotificationDetails(
+      'channel id',
+      'channel name',
+      'cancel Descrpition',
+      importance: Importance.Max,
+      priority: Priority.High,
+      icon: 'uts',
+      style: AndroidNotificationStyle.BigPicture,
+    );
+    var ios = new IOSNotificationDetails();
+    var platform = new NotificationDetails(android, ios);
+    await flutterLocalNotificationsPlugin.show(
+      0,
+      'Welcome to Universal Trading Solutions,',
+      'Flutter Notification',
+      platform,
+    );
+  }
+
+  DateTime currentBackPressTime;
   @override
   Widget build(BuildContext context) {
     Widget imageCarousel = new Container(
@@ -52,7 +89,9 @@ class _DashboardState extends State<Dashboard> {
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.notifications),
-              onPressed: () {},
+              onPressed: () {
+                showNotification();
+              },
             ),
           ],
           elevation: 10.0,

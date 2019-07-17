@@ -96,7 +96,7 @@ class DataSearch extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    if (query.length != null) {
+    if (query.length == 0) {
       return Container(
         color: Helper.hexColor('#EFFFFF'),
         child: Column(
