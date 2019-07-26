@@ -28,7 +28,7 @@ class _UserProfileState extends State<UserProfile> {
         child: Column(
           children: <Widget>[
             Container(
-              height: MediaQuery.of(context).size.height * 2.37,
+              height: MediaQuery.of(context).size.height * 2.60,
               child: Stack(
                 children: <Widget>[
                   Container(
@@ -254,13 +254,13 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.45,
-                    left: MediaQuery.of(context).size.width * 0.02,
+                    left: MediaQuery.of(context).size.width * 0.05,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Container(
-                          height: 100,
-                          width: 170,
+                          height: MediaQuery.of(context).size.height * 0.15,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           child: Card(
                             elevation: 10,
                             color: Helper.hexColor('#e67e22'),
@@ -291,8 +291,8 @@ class _UserProfileState extends State<UserProfile> {
                           width: 10,
                         ),
                         Container(
-                          height: 100,
-                          width: 170,
+                         height: MediaQuery.of(context).size.height * 0.15,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           child: Card(
                             elevation: 10,
                             color: Helper.hexColor('#2980b9'),
@@ -324,13 +324,13 @@ class _UserProfileState extends State<UserProfile> {
                   ),
                   Positioned(
                     top: MediaQuery.of(context).size.height * 0.60,
-                    left: MediaQuery.of(context).size.width * 0.02,
+                 left: MediaQuery.of(context).size.width * 0.05,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Container(
-                          height: 100,
-                          width: 170,
+                         height: MediaQuery.of(context).size.height * 0.15,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           child: Card(
                             elevation: 10,
                             color: Helper.hexColor('#34495e'),
@@ -361,8 +361,8 @@ class _UserProfileState extends State<UserProfile> {
                           width: 10,
                         ),
                         Container(
-                          height: 100,
-                          width: 170,
+                         height: MediaQuery.of(context).size.height * 0.15,
+                          width: MediaQuery.of(context).size.width * 0.42,
                           child: Card(
                             elevation: 10,
                             color: Helper.hexColor('#8e44ad'),
@@ -517,7 +517,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                   ),
                   Positioned(
-                    top: MediaQuery.of(context).size.height * 1.22,
+                    top: MediaQuery.of(context).size.height * 1.30,
                     left: 10,
                     child: Text(
                       'News & Announcement',

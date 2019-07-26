@@ -12,7 +12,7 @@ class InvestmentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 2.37,
+      height: MediaQuery.of(context).size.height * 0.20,
       child: Stack(
         children: <Widget>[
           Container(
@@ -225,14 +225,14 @@ class InvestmentWidget extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.45,
+            top: MediaQuery.of(context).size.height * 0.49,
             left: MediaQuery.of(context).size.width * 0.02,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Container(
-                  height: 100,
-                  width: 170,
+                  // height: 100,
+                  // width: 170,
                   child: Card(
                     elevation: 10,
                     color: Helper.hexColor('#e67e22'),

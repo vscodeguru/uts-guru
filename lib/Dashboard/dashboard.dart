@@ -6,7 +6,6 @@ import 'package:UTS/Dashboard/widget/ServiceCardWidget.dart';
 import 'package:UTS/utils/helper.dart';
 import 'package:flutter/services.dart';
 import 'package:toast/toast.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class Dashboard extends StatefulWidget {
   Dashboard({Key key}) : super(key: key);
@@ -15,43 +14,9 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
-  String _imageUrl = 'https://flutter.io/images/catalog-widget-placeholder.png';
-  final bigPictureStyleInformation =
-      BigPictureStyleInformation('crowd', BitmapSource.Drawable);
-
   @override
   void initState() {
     super.initState();
-    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-    var android = new AndroidInitializationSettings('app_icon');
-    var ios = new IOSInitializationSettings();
-    var initializationSettings = new InitializationSettings(android, ios);
-    flutterLocalNotificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: onSelectNotification);
-  }
-
-  Future onSelectNotification(String payload) async {}
-
-  showNotification() async {
-    var android = new AndroidNotificationDetails(
-      'channel id',
-      'channel name',
-      'cancel Descrpition',
-      importance: Importance.Max,
-      priority: Priority.High,
-      icon: 'uts',
-      style: AndroidNotificationStyle.BigPicture,
-      styleInformation: bigPictureStyleInformation,
-    );
-    var ios = new IOSNotificationDetails(presentBadge: true);
-    var platform = new NotificationDetails(android, ios);
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      'Welcome to Universal Trading Solutions,',
-      'Flutter Notification',
-      platform,
-    );
   }
 
   DateTime currentBackPressTime;
@@ -66,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
         images: [
           AssetImage('assets/Images/slider/flight.jpg'),
           AssetImage('assets/Images/slider/hotel1.jpg'),
-          AssetImage('assets/Images/slider/e-shopping.jpg'),
+          AssetImage('assets/Images/slider/e-shopping-min.jpg'),
           AssetImage('assets/Images/slider/Movie.jpg'),
         ],
         autoplay: true,
@@ -89,11 +54,7 @@ class _DashboardState extends State<Dashboard> {
             style: TextStyle(fontSize: 15),
           ),
           actions: <Widget>[
-            IconButton(
-                icon: Icon(Icons.notifications),
-                onPressed: () {
-                  showNotification();
-                }),
+            IconButton(icon: Icon(Icons.notifications), onPressed: () {}),
           ],
           elevation: 10.0,
         ),

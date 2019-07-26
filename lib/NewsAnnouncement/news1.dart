@@ -17,7 +17,7 @@ class ListView2 extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(right: 68.0),
+                      padding: const EdgeInsets.only(right: 68.0,top: 43),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -63,7 +63,7 @@ class ListView2 extends StatelessWidget {
                   ],
                 ),
                 new Positioned(
-                  top: 0.0,
+                  top: 50.0,
                   bottom: 0.0,
                   left: 35.0,
                   child: new Container(
