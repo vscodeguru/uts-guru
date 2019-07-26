@@ -31,7 +31,7 @@ class _DashboardState extends State<Dashboard> {
         images: [
           AssetImage('assets/Images/slider/flight.jpg'),
           AssetImage('assets/Images/slider/hotel1.jpg'),
-          AssetImage('assets/Images/slider/e-shopping-min.jpg'),
+          AssetImage('assets/Images/slider/e-shopping.jpg'),
           AssetImage('assets/Images/slider/Movie.jpg'),
         ],
         autoplay: true,
